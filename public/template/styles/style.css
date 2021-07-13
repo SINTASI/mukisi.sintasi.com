@@ -1,6 +1,27 @@
 @charset "UTF-8";
 /*Typography Settings*/
+
+html{
+    background-color: white;
+}
+
+.header,.page-title-fixed,#menu-cards,#menu-colors,#menu-share,#footer-bar{
+    max-width: 550px;
+    margin: auto;
+}
+
+.menu-box-left {
+    opacity: 0;
+    top: 0px !important;
+    width: 250px;
+    height: 100%;
+    bottom: 0px;
+    transform: translate3d(-100%, 0, 0);
+}
+
 body {
+  max-width: 550px;
+  margin: auto !important;
   font-size: 13px;
   font-family: "Roboto", sans-serif !important;
   line-height: 24px !important;
@@ -1875,7 +1896,7 @@ body {
 }
 
 .menu-box-left {
-  left: 0px;
+  /* left: 0px; */
   top: 0px !important;
   width: 250px;
   height: 100%;

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return view('app');
-    return inertia('index');
+    return view('users.landing');
 });
+
+Route::resource('/pendaftaran', 'PendaftaranController');

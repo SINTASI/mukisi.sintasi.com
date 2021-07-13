@@ -8,11 +8,16 @@ setTimeout(function () {
 
 document.addEventListener("DOMContentLoaded", () => {
     "use strict";
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
 
     //Global Variables
     let isPWA = false; // Enables or disables the service worker and PWA
     let isAJAX = false; // AJAX transitions. Requires local server or server
-    var pwaName = "Appkit"; //Local Storage Names for PWA
+    var pwaName = "MUKISI"; //Local Storage Names for PWA
     var pwaRemind = 1; //Days to re-remind to add to home
     var pwaNoCache = false; //Requires server and HTTPS/SSL. Will clear cache with each visit
 
@@ -807,20 +812,34 @@ document.addEventListener("DOMContentLoaded", () => {
             var darkModeSwitch = document.querySelectorAll(
                 "[data-toggle-theme]"
             );
-            darkModeSwitch.forEach((el) =>
-                el.addEventListener("click", (e) => {
-                    if (document.body.className == "theme-light") {
-                        removeTransitions();
-                        activateDarkMode();
-                    } else if (document.body.className == "theme-dark") {
-                        removeTransitions();
-                        activateLightMode();
-                    }
-                    setTimeout(function () {
-                        addTransitions();
-                    }, 350);
-                })
-            );
+
+            $(document).on("click", "[data-toggle-theme]", (e) => {
+                if (document.body.className == "theme-light") {
+                    removeTransitions();
+                    activateDarkMode();
+                } else if (document.body.className == "theme-dark") {
+                    removeTransitions();
+                    activateLightMode();
+                }
+                setTimeout(function () {
+                    addTransitions();
+                }, 350);
+            });
+
+            // darkModeSwitch.forEach((el) =>
+            //     el.addEventListener("click", (e) => {
+            //         if (document.body.className == "theme-light") {
+            //             removeTransitions();
+            //             activateDarkMode();
+            //         } else if (document.body.className == "theme-dark") {
+            //             removeTransitions();
+            //             activateLightMode();
+            //         }
+            //         setTimeout(function () {
+            //             addTransitions();
+            //         }, 350);
+            //     })
+            // );
 
             //Set Color Based on Remembered Preference.
             if (localStorage.getItem(pwaName + "-Theme") == "dark-mode") {
@@ -1090,6 +1109,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //Footer Bar Activation
 
+        const menuBottom = $(".footer-bar-6 > a");
+        console.log(menuBottom);
+        $.each(menuBottom, function (key, el) {
+            if (el.href === window.location.href) {
+                $(this).addClass("active-nav").append("<em></em>");
+            }
+        });
+
         var footerBar6 = document.querySelectorAll(".footer-bar-6")[0];
         if (footerBar6) {
             var footerBar6_select = document.querySelectorAll(
@@ -1098,7 +1125,7 @@ document.addEventListener("DOMContentLoaded", () => {
             var footerBar6_circle = document.querySelectorAll(
                 ".footer-bar-6 .circle-nav"
             )[0];
-            footerBar6_select.insertAdjacentHTML("beforeend", "<em></em>");
+            // footerBar6_select.insertAdjacentHTML("beforeend", "<em></em>");
             footerBar6_circle.insertAdjacentHTML(
                 "beforeend",
                 "<strong><u></u></strong>"
@@ -1970,27 +1997,39 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         //Calling Functions Required After External Menus are Loaded
-        var dataMenuLoad = document.querySelectorAll("[data-menu-load]");
-        dataMenuLoad.forEach(function (e) {
-            var menuLoad = e.getAttribute("data-menu-load");
-            fetch(menuLoad)
-                .then((data) => data.text())
-                .then((html) => (e.innerHTML = html))
-                .then((data) => {
-                    setTimeout(function () {
-                        if (dataMenuLoad[dataMenuLoad.length - 1] === e) {
-                            menuFunction();
-                            checkDarkMode();
-                            activateMenus();
-                            shareLinks();
-                            highlightColors();
-                            selectHighlight();
-                            card_extender();
-                            backUp();
-                        }
-                    }, 500);
-                });
-        });
+        // var dataMenuLoad = document.querySelectorAll("[data-menu-load]");
+        // dataMenuLoad.forEach(function (e) {
+        //     var menuLoad = e.getAttribute("data-menu-load");
+        //     fetch(menuLoad)
+        //         .then((data) => data.text())
+        //         .then((html) => (e.innerHTML = html))
+        //         .then((data) => {
+        //             setTimeout(function () {
+        //                 if (dataMenuLoad[dataMenuLoad.length - 1] === e) {
+        //                     menuFunction();
+        //                     checkDarkMode();
+        //                     activateMenus();
+        //                     shareLinks();
+        //                     highlightColors();
+        //                     selectHighlight();
+        //                     card_extender();
+        //                     backUp();
+        //                 }
+        //             }, 500);
+        //         });
+        // });
+
+        //Calling Functions Required After External Menus are Loaded
+        (function () {
+            menuFunction();
+            checkDarkMode();
+            activateMenus();
+            shareLinks();
+            highlightColors();
+            selectHighlight();
+            card_extender();
+            backUp();
+        })();
 
         //Detecting Mobile OS
         let isMobile = {
