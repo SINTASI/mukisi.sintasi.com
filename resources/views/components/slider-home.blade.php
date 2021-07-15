@@ -14,6 +14,13 @@
                         </div>
                     @endforeach
 
+                    @if (count($slider) === 0)
+                        <div class="splide__slide">
+                            <div class="card card-style mx-3 mt-4 bg-20" data-card-height="250">
+                            </div>
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>

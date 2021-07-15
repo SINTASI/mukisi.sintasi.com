@@ -10,16 +10,19 @@
             ],
             "layouts/*": [
                 "resources/js/layouts/*"
-              ],
-              "boot/*": [
+            ],
+            "boot/*": [
                 "resources/js/boot/*"
-              ]
+            ],
+            "components/*": [
+                "resources/js/components/*"
+            ]
         }
     },
     "exclude": [
-      "app",
-      "vendor",
-      "bootstrap",
-      "node_modules"
+        "app",
+        "vendor",
+        "bootstrap",
+        "node_modules"
     ]
 }

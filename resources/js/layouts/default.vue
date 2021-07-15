@@ -8,8 +8,28 @@
                 <q-toolbar-title>Header</q-toolbar-title>
             </q-toolbar>
         </q-header>
-        <q-drawer v-model="drawer" show-if-above :width="240" :breakpoint="400">
+        <q-drawer
+            v-model="drawer"
+            show-if-above
+            bordered
+            content-class="bg-grey-1"
+            :width="301"
+            elevated
+        >
             <q-scroll-area
+                style="height: calc(100% - 150px); margin-top: 150px"
+            >
+                <main-menu
+                    class="q-mt-sm"
+                    v-show="!loading"
+                    @loading="(l) => (loading = l)"
+                />
+            </q-scroll-area>
+            <q-inner-loading :showing="loading" style="background: white">
+                <q-spinner-bars size="40px" color="blue" />
+            </q-inner-loading>
+
+            <!-- <q-scroll-area
                 style="
                     height: calc(100% - 150px);
                     margin-top: 150px;
@@ -35,7 +55,7 @@
                         <q-item-section> Logout </q-item-section>
                     </q-item>
                 </q-list>
-            </q-scroll-area>
+            </q-scroll-area> -->
 
             <q-img
                 class="absolute-top"
@@ -58,13 +78,16 @@
 </template>
 
 <script>
+import MainMenu from "components/MainMenu";
 export default {
+    components: { MainMenu },
     props: {
         title: String,
     },
     data() {
         return {
             drawer: false,
+            loading: false,
         };
     },
     computed: {

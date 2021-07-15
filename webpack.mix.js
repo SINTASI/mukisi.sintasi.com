@@ -19,5 +19,7 @@ mix.alias({
     root: path.join(__dirname, ""),
     "~": path.join(__dirname, "resources/js"),
     css: path.join(__dirname, "resources/css"),
+    boot: path.join(__dirname, "resources/js/boot"),
     ziggy: path.resolve("vendor/tightenco/ziggy/dist/vue"),
+    components: path.join(__dirname, "resources/js/components"),
 });

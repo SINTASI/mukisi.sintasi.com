@@ -48,6 +48,8 @@ createInertiaApp({
 function setGlobalConfig(app) {
     app.component("Header", Head);
     app.config.globalProperties.APP_NAME = process.env.MIX_APP_NAME;
-
+    app.config.globalProperties.myTweak = (offset) => {
+        return { minHeight: offset ? `calc(100vh - ${offset}px)` : "100vh" };
+    };
     return app;
 }

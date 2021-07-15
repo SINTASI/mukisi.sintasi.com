@@ -43,6 +43,7 @@ class SettingSeeder extends Seeder
                 'value' => false,
             ]
         ];
+
         foreach ($data as $value) {
             if (!Setting::where('key', $value['key'])->exists()) {
                 Setting::create($value);
