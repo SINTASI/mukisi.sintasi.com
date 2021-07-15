@@ -1,35 +1,25 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "app/*": [
-        "*"
-      ],
-      "components/*": [
-        "resources/js/components/*"
-      ],
-      "layouts/*": [
-        "resources/js/layouts/*"
-      ],
-      "pages/*": [
-        "resources/js/Pages/*"
-      ],
-      "assets/*": [
-        "resources/js/assets/*"
-      ],
-      "boot/*": [
-        "resources/js/boot/*"
-      ],
-      "vue$": [
-        "node_modules/vue/dist/vue.runtime.esm-bundler.js"
-      ]
-    }
-  },
-  "include": [
-    "resources/js",
-    "resources/css"
-  ],
-  "exclude": [
-    "*"
-  ]
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "root/*": [
+                "*"
+            ],
+            "pages/*": [
+                "resources/js/pages/*"
+            ],
+            "layouts/*": [
+                "resources/js/layouts/*"
+              ],
+              "boot/*": [
+                "resources/js/boot/*"
+              ]
+        }
+    },
+    "exclude": [
+      "app",
+      "vendor",
+      "bootstrap",
+      "node_modules"
+    ]
 }

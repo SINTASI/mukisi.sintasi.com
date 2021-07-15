@@ -2,32 +2,17 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-
-    <title>{{ config('app.name') }}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    {{-- <title>{{ config('app.name') }}</title> --}}
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet"
+        type="text/css">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('/template/styles/bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/template/styles/style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/template/fonts/css/fontawesome-all.min.css') }}">
-    <link rel="manifest" href="{{ asset('/template/_manifest.json') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/template/app/icons/icon-192x192.png') }}">
-
     <script src="{{ mix('/js/app.js') }}" defer></script>
-
 </head>
 
-<body class="theme-light" data-highlight="highlight-red">
-    {{-- @inertia --}}
-    <div id="page" data-page="{{ json_encode($page) }}"></div>
-    <script type="text/javascript" src="{{ asset('/template/scripts/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/template/scripts/custom.js?rand=') . rand() }}"></script>
+<body>
+    @inertia
 </body>
 
 </html>

@@ -14,14 +14,10 @@ const path = require("path");
 mix.js("resources/js/app.js", "public/js")
     .vue()
     .sass("resources/css/app.scss", "public/css");
-// .postCss("resources/css/app.css", "public/css");
-
-// mix.autoload({
-//     jquery: ["$", "window.jQuery"],
-// });
-mix.copy("node_modules/jquery/dist", "storage/app/vendor/jquery");
 
 mix.alias({
+    root: path.join(__dirname, ""),
     "~": path.join(__dirname, "resources/js"),
-    ziggy: path.resolve("vendor/tightenco/ziggy/dist"),
+    css: path.join(__dirname, "resources/css"),
+    ziggy: path.resolve("vendor/tightenco/ziggy/dist/vue"),
 });

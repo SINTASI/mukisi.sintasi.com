@@ -1,10 +1,4 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/storage/app/vendor/jquery/jquery.js": "/storage/app/vendor/jquery/jquery.js",
-    "/storage/app/vendor/jquery/jquery.min.js": "/storage/app/vendor/jquery/jquery.min.js",
-    "/storage/app/vendor/jquery/jquery.min.map": "/storage/app/vendor/jquery/jquery.min.map",
-    "/storage/app/vendor/jquery/jquery.slim.js": "/storage/app/vendor/jquery/jquery.slim.js",
-    "/storage/app/vendor/jquery/jquery.slim.min.js": "/storage/app/vendor/jquery/jquery.slim.min.js",
-    "/storage/app/vendor/jquery/jquery.slim.min.map": "/storage/app/vendor/jquery/jquery.slim.min.map"
+    "/css/app.css": "/css/app.css"
 }
