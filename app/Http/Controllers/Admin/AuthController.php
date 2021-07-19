@@ -22,6 +22,7 @@ class AuthController extends Controller
             'username' => 'required',
             'password' => 'required',
         ]);
+
         $user = User::where('username', $request->username);
         if ($user->exists()) {
             if (Auth::attempt([
@@ -31,9 +32,13 @@ class AuthController extends Controller
                 $request->session()->regenerate();
                 return redirect('admin/dashboard');
             }
-            return inertia('index')->with('message', 'Password tidak sesuai');
+            return inertia('index')->with('errors', [
+                'password' => 'Password tidak sesuai'
+            ]);
         }
-        return inertia('index')->with('message', 'Username tidak ditemukan');
+        return inertia('index')->with('errors', [
+            'username' => 'Username tidak ditemukan'
+        ]);
     }
 
     public function logout(Request $request)

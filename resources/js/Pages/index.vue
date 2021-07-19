@@ -2,7 +2,14 @@
     <q-page class="row flex flex-center" padding>
         <div class="col-md-4 col-sm-6 col-12">
             <q-card class="my-card">
-                <q-form @submit="onSubmit">
+                <q-form
+                    @submit="onSubmit"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    spellcheck="false"
+                    ref="form"
+                >
                     <q-card-section>
                         <div class="text-h6 text-center">ADMIN LOGIN</div>
                     </q-card-section>
@@ -12,11 +19,27 @@
                             v-model="form.username"
                             type="text"
                             label="Username"
+                            lazy-rules
+                            :rules="[
+                                (val) =>
+                                    (val && val.length > 0) ||
+                                    'Please type something',
+                            ]"
+                            :error-message="validation.username.message"
+                            :error="!validation.username.valid"
                         />
                         <q-input
                             v-model="form.password"
                             type="password"
                             label="Password"
+                            lazy-rules
+                            :rules="[
+                                (val) =>
+                                    (val && val.length > 0) ||
+                                    'Please type something',
+                            ]"
+                            :error-message="validation.password.message"
+                            :error="!validation.password.valid"
                         />
                     </q-card-section>
 
@@ -35,7 +58,7 @@
                             type="submit"
                             color="primary"
                             class="full-width"
-                            :loading="form.loading"
+                            :loading="loading"
                         />
                     </q-card-actions>
                 </q-form>
@@ -45,46 +68,47 @@
 </template>
 
 <script>
-import { computed, watch, reactive } from "vue";
-import { Inertia } from "@inertiajs/inertia";
-import { usePage } from "@inertiajs/inertia-vue3";
-import { Notify } from "quasar";
-
 export default {
     layout: "AuthLayout",
-
-    setup() {
-        const form = reactive({
-            username: "",
-            password: "",
-            loading: false,
-            remember: false,
-        });
-
-        watch(
-            computed(() => usePage().props.value.message),
-            (val) => {
-                if (val && val !== null) {
-                    Notify.create({
-                        type: "negative",
-                        message: val,
-                        progress: true,
-                    });
-                }
-            }
-        );
-
-        const onSubmit = () => {
-            form.loading = true;
-            Inertia.post("/admin/login", form, {
-                onFinish: () => (form.loading = false),
-            });
-        };
-
+    data() {
         return {
-            form,
-            onSubmit,
+            form: {
+                username: "",
+                password: "",
+                remember: false,
+            },
+            validation: {
+                password: {
+                    valid: true,
+                    message: "",
+                },
+                username: {
+                    valid: true,
+                    message: "",
+                },
+            },
+            loading: false,
         };
+    },
+    watch: {
+        "$page.props.errors"(type) {
+            for (const key in this.validation) {
+                this.validation[key].valid = true;
+            }
+            for (const key in type) {
+                this.validation[key].valid = false;
+                this.validation[key].message = type[key];
+            }
+        },
+    },
+    mounted() {},
+    methods: {
+        onSubmit() {
+            this.loading = true;
+            this.$inertia.post("/admin/login", this.form, {
+                onFinish: () => (this.loading = false),
+            });
+        },
     },
 };
 </script>
