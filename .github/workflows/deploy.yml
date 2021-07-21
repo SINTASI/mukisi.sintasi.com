@@ -30,4 +30,4 @@ jobs:
           port: 423
           username: sintasic
           password: Sintasi20
-          script: cd mukisi.sintasi.com && composer install -o --no-interaction --prefer-dist --optimize-autoloader
+          script: cd mukisi.sintasi.com && git fetch origin main && git reset --hard origin/main && composer install -o --no-interaction --prefer-dist --optimize-autoloader
