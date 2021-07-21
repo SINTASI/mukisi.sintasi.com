@@ -17,7 +17,7 @@
             elevated
         >
             <q-scroll-area
-                style="height: calc(100% - 150px); margin-top: 150px"
+                style="height: calc(100% - 150px); margin-top: 140px"
             >
                 <main-menu
                     class="q-mt-sm"
