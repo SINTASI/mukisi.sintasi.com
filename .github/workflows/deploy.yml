@@ -1,0 +1,33 @@
+on: push
+name: Build and Publish Front End Framework Website
+jobs:
+  Deploy-Action:
+    name: Deploy-Action
+    runs-on: ubuntu-latest
+    # defaults:
+    #   run:
+    #     working-directory: ./front-end
+    steps:
+      - uses: actions/checkout@master
+
+      # - name: 🚀 Use Node.js 14
+      #   uses: actions/setup-node@v2-beta
+      #   with:
+      #     node-version: "14"
+
+      # - name: 🔨 Build Project
+      #   run: |
+      #     npm install
+      #     npm run build
+
+      - name: 📂 List output files
+        run: ls
+
+      - name: 🚀 Compile script on server
+        uses: appleboy/ssh-action@master
+        with:
+          host: sintasi.com
+          port: 423
+          username: sintasic
+          password: Sintasi20
+          script: cd mukisi.sintasi.com && ./deploy.sh
