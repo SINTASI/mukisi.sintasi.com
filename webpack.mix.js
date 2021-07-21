@@ -23,3 +23,9 @@ mix.alias({
     ziggy: path.resolve("vendor/tightenco/ziggy/dist/vue"),
     components: path.join(__dirname, "resources/js/components"),
 });
+
+mix.disableNotifications();
+
+if (mix.inProduction()) {
+    mix.version();
+}
