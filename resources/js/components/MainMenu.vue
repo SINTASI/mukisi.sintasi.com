@@ -19,7 +19,10 @@
             </q-item>
 
             <div v-for="item in menu" :key="item.id">
-                <q-list v-if="item.child.length > 0">
+                <q-list
+                    v-if="item.child.length > 0"
+                    style="border-bottom: 1px solid #d8d8d8"
+                >
                     <q-expansion-item
                         expand-separator
                         group="submenu"
@@ -108,7 +111,7 @@
                     </q-expansion-item>
                 </q-list>
 
-                <q-list v-else>
+                <q-list v-else style="border-bottom: 1px solid #d8d8d8">
                     <q-item
                         clickable
                         v-ripple
@@ -140,7 +143,6 @@
             </div>
             <q-list>
                 <q-item
-                    style="border-top: solid 0.1px #d8d8d8"
                     clickable
                     v-ripple
                     @click="$inertia.get('/admin/logout')"

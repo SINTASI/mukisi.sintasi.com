@@ -1,9 +1,11 @@
+import "./bootstrap";
 import { createApp, h } from "vue";
 import { createInertiaApp, Head } from "@inertiajs/inertia-vue3";
+import { Inertia } from "@inertiajs/inertia";
 
 import { ZiggyVue } from "ziggy";
 
-import { Quasar } from "quasar";
+import { Quasar, Notify } from "quasar";
 import quasarUserOptions from "./quasar-user-options";
 
 import axios from "boot/axios";
@@ -27,6 +29,13 @@ const setGlobalConfig = (app) => {
     app.config.globalProperties.APP_NAME = process.env.MIX_APP_NAME;
     app.config.globalProperties.myTweak = (offset) => {
         return { minHeight: offset ? `calc(100vh - ${offset}px)` : "100vh" };
+    };
+
+    app.config.globalProperties.$showSuccess = (message) => {
+        Notify.create({
+            message,
+            type: "positive",
+        });
     };
     return app;
 };
@@ -104,12 +113,15 @@ const setVueApp = () => {
                     props,
                     Ziggy,
                     Quasar,
-                    quasarUserOptions,
+                    Inertia,
                     plugin,
                     app: App,
+                    quasarUserOptions,
                 });
 
                 App.mount(el);
+
+                delete App._container.dataset.page;
             });
         },
     });

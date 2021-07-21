@@ -1,28 +1,25 @@
-import axios from "axios";
-import lodash from "lodash";
+Array.prototype.moveUp = function (value, by) {
+    var index = this.indexOf(value),
+        newPos = index - (by || 1);
 
-window._ = lodash;
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
+    if (index === -1) throw new Error("Element not found in array");
 
-axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+    if (newPos < 0) newPos = 0;
 
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
+    this.splice(index, 1);
+    this.splice(newPos, 0, value);
+    return this;
+};
 
-// import Echo from 'laravel-echo';
+Array.prototype.moveDown = function (value, by) {
+    var index = this.indexOf(value),
+        newPos = index + (by || 1);
+    console.log(index);
+    if (index === -1) throw new Error("Element not found in array");
 
-// window.Pusher = require('pusher-js');
+    if (newPos >= this.length) newPos = this.length;
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
-// });
+    this.splice(index, 1);
+    this.splice(newPos, 0, value);
+    return this;
+};

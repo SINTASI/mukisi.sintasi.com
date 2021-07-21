@@ -26,10 +26,12 @@ class MenuAdmin extends Model
 
     public static function mainMenu()
     {
-        return self::where('parent', 0)->get()->each(function ($rows) {
-            $rows->child = self::where('parent', $rows->id)->get()->each(function ($rows) {
-                $rows->child2 = self::where('parent', $rows->id)->get();
+        return self::where('parent', 0)
+            ->orderBy('seq_no')
+            ->get()->each(function ($rows) {
+                $rows->child = self::where('parent', $rows->id)->orderBy('seq_no')->get()->each(function ($rows) {
+                    $rows->child2 = self::where('parent', $rows->id)->orderBy('seq_no')->get();
+                });
             });
-        });
     }
 }

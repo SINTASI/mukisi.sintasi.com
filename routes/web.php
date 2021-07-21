@@ -31,9 +31,13 @@ Route::prefix('admin')->middleware('guest')->group(function () {
 
 
 Route::prefix('admin/master')->middleware(['role:admin', 'auth'])->group(function () {
-    Route::resource('/menu', 'Admin\MenuController');
-    Route::resource('/role', 'Admin\RoleController');
-    Route::resource('/admin', 'Admin\AdminController');
-    Route::resource('/anggota', 'Admin\AnggotaController');
-    Route::resource('/permission', 'Admin\PermissionController');
+    Route::post('/menu/drop-down', 'Admin\MenuController@dropDown');
+
+    Route::resources([
+        'menu' => 'Admin\MenuController',
+        'role' => 'Admin\RoleController',
+        'admin' => 'Admin\AdminController',
+        'anggota' => 'Admin\AnggotaController',
+        'permission' => 'Admin\PermissionController',
+    ]);
 });
