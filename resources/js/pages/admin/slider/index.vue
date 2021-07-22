@@ -38,6 +38,41 @@
                         />
                     </q-td>
                 </template>
+
+                <template v-slot:body-cell-seq_no="props">
+                    <q-td :props="props" auto-width>
+                        <q-popup-edit
+                            v-model="props.row.seq_no"
+                            buttons
+                            @update:modelValue="
+                                (val) => onUpdate(props, 'seq_no', val)
+                            "
+                            v-slot="scope"
+                        >
+                            <q-input
+                                dense
+                                autofocus
+                                type="number"
+                                v-model="scope.value"
+                                @keyup.enter="scope.set"
+                            />
+                        </q-popup-edit>
+                        {{ props.value }}
+                    </q-td>
+                </template>
+
+                <template v-slot:body-cell-btn="props">
+                    <q-td :props="props" auto-width>
+                        <div class="q-gutter-sm">
+                            <q-btn
+                                dense
+                                color="red"
+                                icon="delete"
+                                @click="deleteItem(props)"
+                            />
+                        </div>
+                    </q-td>
+                </template>
             </q-table>
         </q-card>
 
@@ -68,12 +103,17 @@ export default {
                     sortable: true,
                     align: "left",
                 },
-
                 {
                     label: "URUTAN",
                     field: "seq_no",
                     name: "seq_no",
                     sortable: true,
+                    align: "left",
+                },
+                {
+                    label: "ACT",
+                    field: "btn",
+                    name: "btn",
                     align: "left",
                 },
             ],
@@ -82,6 +122,27 @@ export default {
     computed: {
         slider() {
             return this.$page.props.data;
+        },
+    },
+    methods: {
+        onUpdate({ row }, key, value) {
+            this.$inertia.put(`/admin/slider/${row.id}`, {
+                key,
+                value,
+            });
+        },
+        deleteItem({ row }) {
+            this.$q
+                .dialog({
+                    title: `Hapus ${row.name} ? `,
+                    message: `<div class='text-center'><img src='${row.images}' width='368px'></div>`,
+                    html: true,
+                    cancel: true,
+                    ok: "Hapus",
+                })
+                .onOK(() => {
+                    this.$inertia.delete(`/admin/slider/${row.id}`);
+                });
         },
     },
 };

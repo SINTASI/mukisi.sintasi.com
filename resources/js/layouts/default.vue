@@ -112,6 +112,32 @@ export default {
         user() {
             return this.$page.props.auth.user;
         },
+        error() {
+            return this.$page.props.error;
+        },
+        info() {
+            return this.$page.props.info;
+        },
+        success() {
+            return this.$page.props.success;
+        },
+    },
+    watch: {
+        success(message) {
+            if (message && message !== "") {
+                this.$showSuccess(message);
+            }
+        },
+        info(message) {
+            if (message && message !== "") {
+                this.$showInfo(message);
+            }
+        },
+        error(message) {
+            if (message && message !== "") {
+                this.$showError(message);
+            }
+        },
     },
     methods: {
         logOut() {

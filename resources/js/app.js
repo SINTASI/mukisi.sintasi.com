@@ -24,6 +24,15 @@ const redirect = (url) => {
     // window.location.href = normalized;
 };
 
+function ShowNotify(type, message, params) {
+    Notify.create({
+        ...params,
+        message,
+        progress: true,
+        type,
+    });
+}
+
 const setGlobalConfig = (app) => {
     app.component("Header", Head);
     app.config.globalProperties.APP_NAME = process.env.MIX_APP_NAME;
@@ -31,11 +40,16 @@ const setGlobalConfig = (app) => {
         return { minHeight: offset ? `calc(100vh - ${offset}px)` : "100vh" };
     };
 
-    app.config.globalProperties.$showSuccess = (message) => {
-        Notify.create({
-            message,
-            type: "positive",
-        });
+    app.config.globalProperties.$showError = (message, params = {}) => {
+        ShowNotify("negative", message, params);
+    };
+
+    app.config.globalProperties.$showSuccess = (message, params = {}) => {
+        ShowNotify("positive", message, params);
+    };
+
+    app.config.globalProperties.$showInfo = (message, params = {}) => {
+        ShowNotify("info", message, params);
     };
     return app;
 };

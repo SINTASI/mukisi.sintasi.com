@@ -15,15 +15,12 @@ class SliderController extends Controller
      */
     public function index(Slider $slider)
     {
-        $media = $slider->getMedia();
-        // $yourModel->addMedia($pathToImage)
-        $data = $slider->get()->each(function ($rows) use ($media) {
+        $data = $slider->orderBy('seq_no')->get()->each(function ($rows) {
             $rows->images = $rows->getFirstMediaUrl('slider');
         });
         return inertia('admin/slider', [
             'title' => 'SLIDER',
             'data' => $data,
-            'media' => $media
         ]);
     }
 
@@ -45,26 +42,26 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
+        try {
+            $request->validate([
+                'name' => 'required',
+            ]);
 
-        // $slider = new Slider($request->except(['images', 'isUpload', 'file']));
-        // $slider->seq_no = $slider->max('seq_no');
-        // $slider->save();
+            $slider = Slider::create([
+                'name' => request('name'),
+                'seq_no' => Slider::where('active', true)->max('seq_no'),
+            ]);
 
-        $slider = Slider::create([
-            'name' => request('name'),
-            'seq_no' => Slider::where('active', true)->max('seq_no'),
-        ]);
+            if ($request->hasFile('file') && $request->file('file')->isValid() && $request->isUpload) {
+                $slider->addMediaFromRequest('file')->toMediaCollection('slider');
+            } else {
+                $slider->addMediaFromUrl($request->images)->toMediaCollection('slider');
+            }
 
-        if ($request->hasFile('file') && $request->file('file')->isValid() && $request->isUpload) {
-            $slider->addMediaFromRequest('file')->toMediaCollection('slider');
-        } else {
-            $slider->addMediaFromUrl($request->images)->toMediaCollection('slider');
+            return redirect('/admin/slider')->with('success', 'Slider berhasil di simpan');
+        } catch (\Throwable $th) {
+            return redirect('/admin/slider')->with('error', $th->getMessage());
         }
-
-        return $this->index($slider);
     }
 
     /**
@@ -93,12 +90,23 @@ class SliderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $request->validate([
+                'key' => 'required',
+                'value' => 'required',
+            ]);
+            Slider::where('id', $id)->update([
+                $request->key => $request->value
+            ]);
+            return redirect('/admin/slider')->with('success', 'Slider berhasil di update');
+        } catch (\Throwable $th) {
+            return redirect('/admin/slider')->with('error', $th->getMessage());
+        }
     }
 
     /**
@@ -109,6 +117,11 @@ class SliderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Slider::find($id)->delete();
+            return redirect('/admin/slider')->with('success', 'Slider berhasil di hapus');
+        } catch (\Throwable $th) {
+            return redirect('/admin/slider')->with('error', $th->getMessage());
+        }
     }
 }

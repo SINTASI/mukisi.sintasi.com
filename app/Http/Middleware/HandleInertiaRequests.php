@@ -44,7 +44,10 @@ class HandleInertiaRequests extends Middleware
             'auth.menu' => fn () => $request->user()
                 ? MenuAdmin::mainMenu()
                 : null,
-            'message' => fn () => $request->session()->get('message')
+            'message' => fn () => $request->session()->get('message'),
+            'success' => fn () => $request->session()->get('success'),
+            'error' => fn () => $request->session()->get('error'),
+            'info' => fn () => $request->session()->get('info'),
         ]);
     }
 }
