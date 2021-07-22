@@ -21,12 +21,22 @@ Route::get('/', function () {
 Route::resource('/pendaftaran', 'PendaftaranController');
 
 
-Route::prefix('admin')->middleware('guest')->group(function () {
-    Route::get('/', fn () => redirect('admin/login'));
-    Route::post('/login', 'Admin\AuthController@login');
-    Route::get('/login', 'Admin\AuthController@index')->name('admin.login');
-    Route::get('/logout', 'Admin\AuthController@logout')->withoutMiddleware('guest')->name('admin.logout');
-    Route::get('/dashboard', fn () => inertia('dashboard'))->name('admin.dashboard')->middleware(['role:admin', 'auth'])->withoutMiddleware('guest');
+Route::prefix('admin')->middleware(['role:admin', 'auth'])->group(function () {
+    Route::get('/', fn () => redirect('admin/login'))->middleware('guest')->withoutMiddleware(['role:admin', 'auth']);
+    Route::post('/login', 'Admin\AuthController@login')->middleware('guest')->withoutMiddleware(['role:admin', 'auth']);
+    Route::get('/login', 'Admin\AuthController@index')->name('admin.login')
+        ->middleware('guest')->withoutMiddleware(['role:admin', 'auth']);
+
+    Route::get('/logout', 'Admin\AuthController@logout')->name('admin.logout');
+    Route::get('/dashboard', fn () => inertia('dashboard'))->name('admin.dashboard');
+
+
+
+    Route::resources([
+        'posts' => 'Admin\PostsController',
+        'slider' => 'Admin\SliderController',
+        'anggota' => 'Admin\AnggotaController',
+    ]);
 });
 
 
@@ -34,10 +44,10 @@ Route::prefix('admin/master')->middleware(['role:admin', 'auth'])->group(functio
     Route::post('/menu/drop-down', 'Admin\MenuController@dropDown');
 
     Route::resources([
-        'menu' => 'Admin\MenuController',
-        'role' => 'Admin\RoleController',
-        'admin' => 'Admin\AdminController',
-        'anggota' => 'Admin\AnggotaController',
-        'permission' => 'Admin\PermissionController',
+        'menu' => 'Admin\Master\MenuController',
+        'role' => 'Admin\Master\RoleController',
+        'admin' => 'Admin\Master\AdminController',
+        'anggota' => 'Admin\Master\AnggotaController',
+        'permission' => 'Admin\Master\PermissionController',
     ]);
 });

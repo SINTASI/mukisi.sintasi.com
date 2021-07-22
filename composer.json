@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "bjuppa/laravel-blog": "^1.8",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -16,6 +17,7 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "rennokki/laravel-eloquent-query-cache": "^3.0",
+        "spatie/laravel-medialibrary": "^9.0.0",
         "spatie/laravel-permission": "^4.2",
         "tightenco/ziggy": "^1.3"
     },

@@ -3,19 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
-class AnggotaController extends Controller
+class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Slider $slider)
     {
-        return inertia('admin/anggota', [
-            'title' => 'POSTS'
+        $slider->getMedia();
+        $data = $slider->get()->each(function ($rows) use ($slider) {
+            $rows->images = $slider->getFirstMediaUrl('slider');
+        });
+        return inertia('admin/slider', [
+            'title' => 'SLIDER',
+            'data' => $data,
+            'media' => $slider->getMedia()
         ]);
     }
 
@@ -37,7 +44,20 @@ class AnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $slider = new Slider($request->except(['images', 'isUpload', 'file']));
+        $slider->seq_no = $slider->max('seq_no');
+        $slider->save();
+        if ($request->hasFile('file') && $request->file('file')->isValid()) {
+            $slider->addMediaFromRequest('file')->toMediaCollection('slider');
+        } else {
+            $slider->addMediaFromUrl($request->images)->toMediaCollection('slider');
+        }
+
+        return $this->index($slider);
     }
 
     /**

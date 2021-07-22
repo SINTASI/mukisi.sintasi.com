@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Master;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PermissionController extends Controller
+class AnggotaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        return inertia('admin/master/permission', [
-            'title' => 'MASTER PERMISSION'
-        ]);
+        //
     }
 
     /**

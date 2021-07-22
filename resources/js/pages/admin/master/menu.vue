@@ -27,6 +27,7 @@
                 :rows="menu"
                 :filter="filter"
                 :columns="columns"
+                :pagination="{ rowsPerPage: 0 }"
             >
                 <template v-slot:header="props">
                     <q-tr :props="props">
@@ -113,6 +114,7 @@
                                 dense
                                 flat
                                 hide-bottom
+                                :pagination="{ rowsPerPage: 0 }"
                             >
                                 <template v-slot:header="props">
                                     <q-tr :props="props">
@@ -232,7 +234,6 @@
                                     (val && val.length > 0) ||
                                     'Tidak boleh kosong',
                             ]"
-                            hint="URL : https://fonts.google.com/icons"
                         />
 
                         <q-input
@@ -247,6 +248,7 @@
                                     (val && val.length > 0) ||
                                     'Tidak boleh kosong',
                             ]"
+                            hint="URL : https://fonts.google.com/icons"
                         />
                     </q-card-section>
                     <q-card-actions align="right">

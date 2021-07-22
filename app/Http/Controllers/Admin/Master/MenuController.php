@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Master;
+
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\MenuAdmin;
