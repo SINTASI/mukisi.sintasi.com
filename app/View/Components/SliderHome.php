@@ -26,7 +26,7 @@ class SliderHome extends Component
     public function render()
     {
         return view('components.slider-home', [
-            'slider' => Slider::where('active', true)->get()
+            'slider' => Slider::where('active', true)->orderBy('seq_no')->get()
         ]);
     }
 }

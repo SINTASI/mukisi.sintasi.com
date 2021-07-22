@@ -8,7 +8,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Slider extends Model  implements HasMedia
+class Slider extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
@@ -19,6 +19,10 @@ class Slider extends Model  implements HasMedia
      */
     protected $fillable = ['name', 'seq_no', 'images'];
 
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('slider');
+    }
 
     public function registerMediaConversions(?Media $media = null): void
     {

@@ -15,14 +15,15 @@ class SliderController extends Controller
      */
     public function index(Slider $slider)
     {
-        $slider->getMedia();
-        $data = $slider->get()->each(function ($rows) use ($slider) {
-            $rows->images = $slider->getFirstMediaUrl('slider');
+        $media = $slider->getMedia();
+        // $yourModel->addMedia($pathToImage)
+        $data = $slider->get()->each(function ($rows) use ($media) {
+            $rows->images = $rows->getFirstMediaUrl('slider');
         });
         return inertia('admin/slider', [
             'title' => 'SLIDER',
             'data' => $data,
-            'media' => $slider->getMedia()
+            'media' => $media
         ]);
     }
 
@@ -48,10 +49,16 @@ class SliderController extends Controller
             'name' => 'required',
         ]);
 
-        $slider = new Slider($request->except(['images', 'isUpload', 'file']));
-        $slider->seq_no = $slider->max('seq_no');
-        $slider->save();
-        if ($request->hasFile('file') && $request->file('file')->isValid()) {
+        // $slider = new Slider($request->except(['images', 'isUpload', 'file']));
+        // $slider->seq_no = $slider->max('seq_no');
+        // $slider->save();
+
+        $slider = Slider::create([
+            'name' => request('name'),
+            'seq_no' => Slider::where('active', true)->max('seq_no'),
+        ]);
+
+        if ($request->hasFile('file') && $request->file('file')->isValid() && $request->isUpload) {
             $slider->addMediaFromRequest('file')->toMediaCollection('slider');
         } else {
             $slider->addMediaFromUrl($request->images)->toMediaCollection('slider');

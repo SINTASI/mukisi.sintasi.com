@@ -7,8 +7,8 @@
                     @foreach ($slider as $sliders)
                         <div class="splide__slide">
                             <div class="{{ $sliders->class }}" data-card-height="{{ $sliders->height }}">
-                                <img src="{{ $sliders->images }}" alt="{{ setting('name') }}-{{ $sliders->name }}"
-                                    height="100%" width="100%">
+                                <img src="{{ $sliders->getFirstMediaUrl('slider') }}"
+                                    alt="{{ setting('name') }}-{{ $sliders->name }}" height="100%" width="100%">
                                 {{-- <div class="card-overlay bg-gradient"></div> --}}
                             </div>
                         </div>
