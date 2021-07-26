@@ -3,7 +3,7 @@
     @if (isset($headerTitle))
         <a href="{{ url('/') }}" class="header-title">{{ $headerTitle }}</a>
     @else
-        <a href="{{ url('/') }}" class="header-title">@setting('title_header')</a>
+        <a href="{{ url('/') }}" class="header-title">@setting('name')</a>
     @endif
 
 

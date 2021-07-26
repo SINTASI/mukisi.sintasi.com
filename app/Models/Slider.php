@@ -13,11 +13,11 @@ class Slider extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'seq_no', 'images'];
+    protected $guarded = ['id'];
 
     public function registerMediaCollections(): void
     {

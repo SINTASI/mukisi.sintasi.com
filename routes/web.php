@@ -28,20 +28,23 @@ Route::prefix('admin')->middleware(['role:admin', 'auth'])->group(function () {
         ->middleware('guest')->withoutMiddleware(['role:admin', 'auth']);
 
     Route::get('/logout', 'Admin\AuthController@logout')->name('admin.logout');
+
     Route::get('/dashboard', fn () => inertia('dashboard'))->name('admin.dashboard');
 
 
-
+    Route::post('/posts/uploadFile', 'Admin\PostsController@uploadFile');
+    Route::get('/posts/fetchUrl', 'Admin\PostsController@fetchUrl');
     Route::resources([
         'posts' => 'Admin\PostsController',
         'slider' => 'Admin\SliderController',
         'anggota' => 'Admin\AnggotaController',
+        'setting' => 'Admin\SettingContrroler',
     ]);
 });
 
 
 Route::prefix('admin/master')->middleware(['role:admin', 'auth'])->group(function () {
-    Route::post('/menu/drop-down', 'Admin\MenuController@dropDown');
+    Route::post('/menu/drop-down', 'Admin\Master\MenuController@dropDown');
 
     Route::resources([
         'menu' => 'Admin\Master\MenuController',

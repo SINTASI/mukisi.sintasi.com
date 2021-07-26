@@ -18,7 +18,10 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();
-            $table->string('value');
+            $table->longText('value')->nullable();
+            $table->string('label')->default('Label')->nullable();
+            $table->string('type', 50)->default('basic')->nullable();
+            $table->boolean('is_image')->default(false)->nullable();
             $table->timestamps();
         });
 

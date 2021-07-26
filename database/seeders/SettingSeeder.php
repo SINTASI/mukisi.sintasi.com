@@ -37,10 +37,6 @@ class SettingSeeder extends Seeder
             [
                 'key' => 'color_secondary',
                 'value' => '#1740bf',
-            ],
-            [
-                'key' => 'dark_mode',
-                'value' => false,
             ]
         ];
 

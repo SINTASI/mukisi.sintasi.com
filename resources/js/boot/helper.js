@@ -1,3 +1,5 @@
+import { boot } from "quasar/wrappers";
+import { Head } from "@inertiajs/inertia-vue3";
 Array.prototype.moveUp = function (value, by) {
     var index = this.indexOf(value),
         newPos = index - (by || 1);
@@ -23,3 +25,17 @@ Array.prototype.moveDown = function (value, by) {
     this.splice(newPos, 0, value);
     return this;
 };
+
+export default boot(({ app, Inertia }) => {
+    app.component("Header", Head);
+    app.config.globalProperties.APP_NAME = process.env.MIX_APP_NAME;
+    app.config.globalProperties.myTweak = (offset) => {
+        return { minHeight: offset ? `calc(100vh - ${offset}px)` : "100vh" };
+    };
+    app.config.globalProperties.getProps = function (key = false) {
+        if (!key) {
+            return this.$page.props;
+        }
+        return this.$page.props[key];
+    };
+});

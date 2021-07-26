@@ -1,79 +1,23 @@
-import "./bootstrap";
 import { createApp, h } from "vue";
-import { createInertiaApp, Head } from "@inertiajs/inertia-vue3";
+import { createInertiaApp } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
 
 import { ZiggyVue } from "ziggy";
 
-import { Quasar, Notify } from "quasar";
-import quasarUserOptions from "./quasar-user-options";
+import { Quasar } from "quasar";
 
 import axios from "boot/axios";
 
 import createStore from "~/store/index";
+import { bootFiles, quasarUserOptions } from "./quasar-user-options";
 
-const bootFiles = [axios];
+const publicPath = `/`;
 const urlPath = window.location.href.replace(window.location.origin, "");
 let hasRedirected = false;
 
 const redirect = (url) => {
     hasRedirected = true;
     window.location.href = url;
-    // const normalized =
-    //     Object(url) === url ? router.resolve(url).route.fullPath : url;
-    // window.location.href = normalized;
-};
-
-function ShowNotify(type, message, params) {
-    Notify.create({
-        ...params,
-        message,
-        progress: true,
-        type,
-    });
-}
-
-const setGlobalConfig = (app) => {
-    app.component("Header", Head);
-    app.config.globalProperties.APP_NAME = process.env.MIX_APP_NAME;
-    app.config.globalProperties.myTweak = (offset) => {
-        return { minHeight: offset ? `calc(100vh - ${offset}px)` : "100vh" };
-    };
-
-    app.config.globalProperties.$showError = (message, params = {}) => {
-        ShowNotify("negative", message, params);
-    };
-
-    app.config.globalProperties.$showSuccess = (message, params = {}) => {
-        ShowNotify("positive", message, params);
-    };
-
-    app.config.globalProperties.$showInfo = (message, params = {}) => {
-        ShowNotify("info", message, params);
-    };
-    return app;
-};
-
-const setBootFile = async (params) => {
-    for (let i = 0; hasRedirected === false && i < bootFiles.length; i++) {
-        if (typeof bootFiles[i] !== "function") {
-            continue;
-        }
-        try {
-            await bootFiles[i]({
-                redirect,
-                urlPath,
-                ...params,
-            });
-        } catch (err) {
-            if (err && err.url) {
-                window.location.href = err.url;
-                return;
-            }
-            console.error("boot error:", err);
-            return;
-        }
-    }
 };
 
 const setRoutes = async (callback) => {
@@ -91,6 +35,26 @@ const setStore = async (App) => {
             ? await createStore(App)
             : createStore;
     return store;
+};
+
+const setBoot = async (params, fileBoot) => {
+    for (const bootName in fileBoot) {
+        if (
+            hasRedirected === false &&
+            typeof fileBoot[bootName].default === "function"
+        ) {
+            try {
+                await fileBoot[bootName].default(params);
+            } catch (err) {
+                if (err && err.url) {
+                    window.location.href = err.url;
+                    return;
+                }
+                console.warn(`[boot/${bootName}.js] boot file error: `, err);
+                return;
+            }
+        }
+    }
 };
 
 const setVueApp = () => {
@@ -114,27 +78,26 @@ const setVueApp = () => {
             setRoutes(async (Ziggy) => {
                 const App = createApp({ render: () => h(app, props) });
                 const store = await setStore(App);
-                setGlobalConfig(App);
+                const fileBoot = await Promise.all(bootFiles);
+                await setBoot(
+                    {
+                        app: App,
+                        Ziggy,
+                        store,
+                        props,
+                        Inertia,
+                        urlPath,
+                        redirect,
+                        publicPath,
+                    },
+                    fileBoot
+                );
 
                 App.use(store);
                 App.use(plugin);
                 App.use(ZiggyVue, Ziggy);
                 App.use(Quasar, quasarUserOptions);
-
-                await setBootFile({
-                    el,
-                    store,
-                    props,
-                    Ziggy,
-                    Quasar,
-                    Inertia,
-                    plugin,
-                    app: App,
-                    quasarUserOptions,
-                });
-
                 App.mount(el);
-
                 delete App._container.dataset.page;
             });
         },

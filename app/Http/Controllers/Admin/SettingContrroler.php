@@ -2,51 +2,29 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class PostsController extends Controller
+class SettingContrroler extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return inertia('admin/posts', [
-            'title' => 'POSTS'
-        ]);
-    }
-
-
-    public function uploadFile(Request $request)
-    {
-        return response([
-            'success' => 1,
-            'file' => [
-                'url' => null
-            ]
-        ]);
-    }
-
-
-    public function fetchUrl(Request $request)
-    {
-        $data = [];
-        if ($request->has('url')) {
-            $tags = parseTag($request->query('url'));
-            if ($tags !== false) {
-                $data['meta'] = [
-                    "title" => $tags['title'],
-                    "description" => $tags['description']
-                ];
-            }
-            $data['success'] = $tags !== false;
+        if ($request->has('type')) {
+            return response([
+                'data' => Setting::where('type', '=', $request->type)->orderBy('is_image')->get()
+            ]);
         }
 
-
-        return response($data);
+        return inertia('admin/setting', [
+            'title' => 'SETTING',
+            'data' => Setting::get()
+        ]);
     }
 
     /**
@@ -67,7 +45,11 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $files = $request->file('images')->store('images');
+        $data = Setting::where('id', $request->id)->update([
+            'value' => '/' . $files
+        ]);
+        return response($data);
     }
 
     /**
@@ -101,7 +83,15 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $count = 0;
+        foreach ($request->setting as $value) {
+            unset($value['created_at']);
+            unset($value['updated_at']);
+            if (setting($value['key']) !== $value['value']) {
+                $count += Setting::where('id', $value['id'])->update($value);
+            }
+        }
+        return response($count);
     }
 
     /**

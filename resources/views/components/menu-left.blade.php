@@ -7,7 +7,7 @@
                     class="fa fa-times color-white"></i></a>
         </div>
         <div class="card-bottom">
-            <h1 class="color-white ps-3 mb-n1 font-28">@setting('title_header')</h1>
+            <h1 class="color-white ps-3 mb-n1 font-28">@setting('name')</h1>
             <p class="mb-2 ps-3 font-12 color-white opacity-50">@setting('caption_menu_kiri')</p>
         </div>
         <div class="card-overlay bg-gradient"></div>

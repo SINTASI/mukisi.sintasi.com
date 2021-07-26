@@ -10,11 +10,13 @@
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
 
     @if (isset($title))
-        <title>@setting('name') - {{ $title }}</title>
+        <title>@setting('title') - {{ $title }}</title>
     @else
-        <title>@setting('name')</title>
+        <title>@setting('title')</title>
     @endif
-
+    @include('components.custome-style')
+    <meta name="description" content="@setting('description')">
+    <link rel="icon" type="image/png" href="@setting('favicon')">
     <link rel="stylesheet" type="text/css" href="{{ asset('/template/styles/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/template/styles/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -24,7 +26,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/template/app/icons/icon-192x192.png') }}">
 
 
-    @include('components.custome-style')
+
 
 </head>
 
