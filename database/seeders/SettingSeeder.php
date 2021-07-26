@@ -19,7 +19,7 @@ class SettingSeeder extends Seeder
                 'value' => '',
             ],
             [
-                'key' => 'title_header',
+                'key' => 'title',
                 'value' => config('app.name'),
             ],
             [

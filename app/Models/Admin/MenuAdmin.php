@@ -15,14 +15,12 @@ class MenuAdmin extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'icon',
-        'link',
-        'color',
-        'seq_no',
-        'parent',
-    ];
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = ['id'];
 
     public static function mainMenu()
     {

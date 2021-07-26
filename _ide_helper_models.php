@@ -104,6 +104,27 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\MasterCategory
+ *
+ * @property int $id
+ * @property string $name
+ * @property string|null $type
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory query()
+ * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory whereUpdatedAt($value)
+ */
+	class MasterCategory extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\MenuUser
  *
  * @property int $id
