@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.51.0.
+ * Generated for Laravel 8.49.2.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -5952,20 +5952,6 @@
                         $instance->replace($path, $content);
         }
                     /**
-         * Replace a given string within a given file.
-         *
-         * @param array|string $search
-         * @param array|string $replace
-         * @param string $path
-         * @return void 
-         * @static 
-         */ 
-        public static function replaceInFile($search, $replace, $path)
-        {
-                        /** @var \Illuminate\Filesystem\Filesystem $instance */
-                        $instance->replaceInFile($search, $replace, $path);
-        }
-                    /**
          * Prepend to a file.
          *
          * @param string $path
@@ -10759,14 +10745,13 @@
          *
          * @param string $key
          * @param callable $callback
-         * @param callable|null $default
          * @return $this|mixed 
          * @static 
          */ 
-        public static function whenHas($key, $callback, $default = null)
+        public static function whenHas($key, $callback)
         {
                         /** @var \Illuminate\Http\Request $instance */
-                        return $instance->whenHas($key, $callback, $default);
+                        return $instance->whenHas($key, $callback);
         }
                     /**
          * Determine if the request contains a non-empty value for an input item.
@@ -10809,14 +10794,13 @@
          *
          * @param string $key
          * @param callable $callback
-         * @param callable|null $default
          * @return $this|mixed 
          * @static 
          */ 
-        public static function whenFilled($key, $callback, $default = null)
+        public static function whenFilled($key, $callback)
         {
                         /** @var \Illuminate\Http\Request $instance */
-                        return $instance->whenFilled($key, $callback, $default);
+                        return $instance->whenFilled($key, $callback);
         }
                     /**
          * Determine if the request is missing a given input item key.
@@ -13854,56 +13838,6 @@
                         /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
                         return $instance->getDriver();
         }
-                    /**
-         * Register a custom macro.
-         *
-         * @param string $name
-         * @param object|callable $macro
-         * @return void 
-         * @static 
-         */ 
-        public static function macro($name, $macro)
-        {
-                        \Illuminate\Filesystem\FilesystemAdapter::macro($name, $macro);
-        }
-                    /**
-         * Mix another object into the class.
-         *
-         * @param object $mixin
-         * @param bool $replace
-         * @return void 
-         * @throws \ReflectionException
-         * @static 
-         */ 
-        public static function mixin($mixin, $replace = true)
-        {
-                        \Illuminate\Filesystem\FilesystemAdapter::mixin($mixin, $replace);
-        }
-                    /**
-         * Checks if macro is registered.
-         *
-         * @param string $name
-         * @return bool 
-         * @static 
-         */ 
-        public static function hasMacro($name)
-        {
-                        return \Illuminate\Filesystem\FilesystemAdapter::hasMacro($name);
-        }
-                    /**
-         * Dynamically handle calls to the class.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
-         * @throws \BadMethodCallException
-         * @static 
-         */ 
-        public static function macroCall($method, $parameters)
-        {
-                        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
-                        return $instance->macroCall($method, $parameters);
-        }
          
     }
             /**
@@ -14483,17 +14417,6 @@
         {
                         /** @var \Illuminate\Validation\Factory $instance */
                         $instance->replacer($rule, $replacer);
-        }
-                    /**
-         * Indicate that unvalidated array keys should be excluded, even if the parent array was validated.
-         *
-         * @return void 
-         * @static 
-         */ 
-        public static function excludeUnvalidatedArrayKeys()
-        {
-                        /** @var \Illuminate\Validation\Factory $instance */
-                        $instance->excludeUnvalidatedArrayKeys();
         }
                     /**
          * Set the Validator instance resolver.
@@ -15726,70 +15649,6 @@
      
 }
 
-    namespace Intervention\Image\Facades { 
-            /**
-     * 
-     *
-     */ 
-        class Image {
-                    /**
-         * Overrides configuration settings
-         *
-         * @param array $config
-         * @return self 
-         * @static 
-         */ 
-        public static function configure($config = [])
-        {
-                        /** @var \Intervention\Image\ImageManager $instance */
-                        return $instance->configure($config);
-        }
-                    /**
-         * Initiates an Image instance from different input types
-         *
-         * @param mixed $data
-         * @return \Intervention\Image\Image 
-         * @static 
-         */ 
-        public static function make($data)
-        {
-                        /** @var \Intervention\Image\ImageManager $instance */
-                        return $instance->make($data);
-        }
-                    /**
-         * Creates an empty image canvas
-         *
-         * @param int $width
-         * @param int $height
-         * @param mixed $background
-         * @return \Intervention\Image\Image 
-         * @static 
-         */ 
-        public static function canvas($width, $height, $background = null)
-        {
-                        /** @var \Intervention\Image\ImageManager $instance */
-                        return $instance->canvas($width, $height, $background);
-        }
-                    /**
-         * Create new cached image and run callback
-         * (requires additional package intervention/imagecache)
-         *
-         * @param \Closure $callback
-         * @param int $lifetime
-         * @param boolean $returnObj
-         * @return \Image 
-         * @static 
-         */ 
-        public static function cache($callback, $lifetime = null, $returnObj = false)
-        {
-                        /** @var \Intervention\Image\ImageManager $instance */
-                        return $instance->cache($callback, $lifetime, $returnObj);
-        }
-         
-    }
-     
-}
-
     namespace Illuminate\Http { 
             /**
      * 
@@ -16410,8 +16269,9 @@ namespace  {
              * @param int|null $perPage
              * @param array $columns
              * @param string $cursorName
-             * @param \Illuminate\Pagination\Cursor|string|null $cursor
+             * @param string|null $cursor
              * @return \Illuminate\Contracts\Pagination\CursorPaginator 
+             * @throws \Illuminate\Pagination\CursorPaginationException
              * @static 
              */ 
             public static function cursorPaginate($perPage = null, $columns = [], $cursorName = 'cursor', $cursor = null)
@@ -17223,7 +17083,7 @@ namespace  {
              * @param mixed $value
              * @param callable $callback
              * @param callable|null $default
-             * @return $this|mixed 
+             * @return mixed 
              * @static 
              */ 
             public static function when($value, $callback, $default = null)
@@ -17238,7 +17098,7 @@ namespace  {
              * @param mixed $value
              * @param callable $callback
              * @param callable|null $default
-             * @return $this|mixed 
+             * @return mixed 
              * @static 
              */ 
             public static function unless($value, $callback, $default = null)
@@ -17334,7 +17194,6 @@ namespace  {
                 /**
              * Force the query to only return distinct results.
              *
-             * @param mixed $distinct
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -18445,7 +18304,7 @@ namespace  {
                 /**
              * Add a descending "order by" clause to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string $column
+             * @param string $column
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -18581,7 +18440,7 @@ namespace  {
                 /**
              * Remove all existing orders and optionally add a new order.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string|null $column
+             * @param string|null $column
              * @param string $direction
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -19200,7 +19059,6 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
-            class Image extends \Intervention\Image\Facades\Image {}
      
 }
 
@@ -19424,7 +19282,7 @@ if (! function_exists('retry')) {
      *
      * @param  int  $times
      * @param  callable  $callback
-     * @param  int|\Closure  $sleepMilliseconds
+     * @param  int  $sleepMilliseconds
      * @param  callable|null  $when
      * @return mixed
      *
@@ -19446,7 +19304,7 @@ if (! function_exists('retry')) {
             }
 
             if ($sleepMilliseconds) {
-                usleep(value($sleepMilliseconds, $attempts) * 1000);
+                usleep($sleepMilliseconds * 1000);
             }
 
             goto beginning;

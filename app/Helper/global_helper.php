@@ -7,7 +7,7 @@ function setting(string $key = null)
         if ($get->exists()) {
             return $get->first()->value;
         }
-        throw new Exception(strtoupper($key) . " is not exists from Database settings", 1);
+        return null;
     }
     return App\Models\Setting::get();
 }
