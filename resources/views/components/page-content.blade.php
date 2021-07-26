@@ -1,3 +1,3 @@
-<div class="page-content {{ $headerClearMedium ? 'header-clear-medium' : '' }}" style="min-height: 45rem;">
+<div class="page-content {{ $headerClearMedium ? 'header-clear-medium' : '' }}" style="min-height: 100vh;">
     {{ $slot }}
 </div>

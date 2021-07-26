@@ -133,8 +133,10 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $key
- * @property string $value
- * @property string $type
+ * @property string|null $value
+ * @property string|null $label
+ * @property string|null $type
+ * @property int|null $is_image
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Setting newModelQuery()
@@ -142,7 +144,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Setting query()
  * @method static \Illuminate\Database\Eloquent\Builder|Setting whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Setting whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Setting whereIsImage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Setting whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Setting whereLabel($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Setting whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Setting whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Setting whereValue($value)
@@ -190,6 +194,8 @@ namespace App\Models{
  * @property string|null $email
  * @property string|null $username
  * @property string|null $no_anggota
+ * @property string|null $type
+ * @property int|null $category_id
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string|null $password
  * @property string|null $remember_token
@@ -207,6 +213,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User permission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
  * @method static \Illuminate\Database\Eloquent\Builder|User role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
@@ -215,6 +222,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereNoAnggota($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  */

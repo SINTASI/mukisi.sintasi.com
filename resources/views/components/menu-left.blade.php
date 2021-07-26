@@ -67,3 +67,20 @@
     </h6>
 
 </div>
+
+
+<div class="z-full"></div>
+
+@push('style')
+    <style>
+        .z-full {
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            bottom: 0px;
+            transform: translate3d(-100%, 0, 0);
+            z-index: 99999;
+        }
+
+    </style>
+@endpush
