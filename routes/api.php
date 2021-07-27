@@ -20,3 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('ziggy', fn () => response()->json(new Ziggy));
+
+
+Route::prefix('maps')->group(function () {
+    Route::get('/getProv', 'MapsController@getProv');
+    Route::get('/getKab', 'MapsController@getKab');
+    Route::get('/getKec', 'MapsController@getKec');
+    Route::get('/getKel', 'MapsController@getKel');
+});

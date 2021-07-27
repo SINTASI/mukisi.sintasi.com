@@ -1,5 +1,6 @@
 <?php
 
+
 function setting(string $key = null)
 {
     if (isset($key)) {
@@ -11,7 +12,6 @@ function setting(string $key = null)
     }
     return App\Models\Setting::get();
 }
-
 
 function parseTag($url, $timeout = 10)
 {

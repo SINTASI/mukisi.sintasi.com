@@ -8,6 +8,7 @@
         <i class="fa fa-check disabled valid color-green-dark"></i>
         <em>(required)</em>
     </div>
+
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-at"></i>
         <input type="email" class="form-control validate-email" id="form1ac" placeholder="Email Address">
@@ -16,6 +17,47 @@
         <i class="fa fa-check disabled valid color-green-dark"></i>
         <em>(required)</em>
     </div>
+
+    <div class="input-style no-borders has-icon validate-field mb-4">
+        <i class="fa fa-list"></i>
+        <select name="prov_code" id="prov_code" class="form-control validate" required onchange="loadKab()">
+            {!! $prov !!}
+        </select>
+        <label for="prov_code" class="color-highlight">Provinsi</label>
+        <i class="fa fa-times disabled invalid color-red-dark"></i>
+        <i class="fa fa-check disabled valid color-green-dark"></i>
+    </div>
+
+    <div class="input-style no-borders has-icon validate-field mb-4">
+        <i class="fa fa-list"></i>
+        <select name="kab_code" id="kab_code" class="form-control validate" required onchange="loadKec()">
+            <option value="">Kabupaten/Kota</option>
+        </select>
+        <label for="kab_code" class="color-highlight">Kabupaten/Kota</label>
+        <i class="fa fa-times disabled invalid color-red-dark"></i>
+        <i class="fa fa-check disabled valid color-green-dark"></i>
+    </div>
+
+    <div class="input-style no-borders has-icon validate-field mb-4">
+        <i class="fa fa-list"></i>
+        <select name="kec_code" id="kec_code" class="form-control validate" required onchange="loadKel()">
+            <option value="">Kecamatan</option>
+        </select>
+        <label for="kec_code" class="color-highlight">Kecamatan</label>
+        <i class="fa fa-times disabled invalid color-red-dark"></i>
+        <i class="fa fa-check disabled valid color-green-dark"></i>
+    </div>
+
+    <div class="input-style no-borders has-icon validate-field mb-4">
+        <i class="fa fa-list"></i>
+        <select name="kel_code" id="kel_code" class="form-control validate" required>
+            <option value="">Kelurahan</option>
+        </select>
+        <label for="kel_code" class="color-highlight">Kelurahan</label>
+        <i class="fa fa-times disabled invalid color-red-dark"></i>
+        <i class="fa fa-check disabled valid color-green-dark"></i>
+    </div>
+
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-lock"></i>
         <input type="password" class="form-control validate-password" id="form1ad" placeholder="Choose Password">
@@ -46,3 +88,7 @@
         </div>
     </div>
 </div>
+
+
+
+{!! $mapscript !!}

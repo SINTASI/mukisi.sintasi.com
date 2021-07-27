@@ -2,6 +2,7 @@
 
 namespace App\View\Components\pendaftaran;
 
+use App\Models\Map;
 use App\Models\MasterCategory;
 use Illuminate\View\Component;
 
@@ -24,6 +25,9 @@ class Personal extends Component
      */
     public function render()
     {
-        return view('components.pendaftaran.personal');
+        return view('components.pendaftaran.personal', [
+            'mapscript' => Map::loadScript(),
+            'prov' => Map::loadProv(),
+        ]);
     }
 }

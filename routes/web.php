@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Map;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('users.landing');
-});
+Route::get('/', fn () => view('users.landing'));
 
 Route::resource('/pendaftaran', 'PendaftaranController');
 

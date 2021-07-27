@@ -14,7 +14,7 @@
 
                 </div>
                 <div class="clearfix mb-3"></div>
-                <form method="POST" action="/pendaftaran?type={{ $type }}">
+                <form method="POST" action="/pendaftaran?type={{ $type }}" enctype="multipart/form-data">
                     @csrf
                     <div data-bs-parent="#tab-group-1" class="collapse show" id="{{ $type }}">
                         @if ($type === 'personal')

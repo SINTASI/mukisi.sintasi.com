@@ -21,13 +21,9 @@ class CreateMasterCategoriesTable extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->string('type', 50)
-                ->nullable()
-                ->default('anggota')->after('no_anggota');
+            $table->string('type', 50)->nullable()->default('anggota')->after('no_anggota');
             $table->unsignedBigInteger('category_id')->nullable()->after('type');
-            $table->foreign('category_id')->references('id')->on('master_categories')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->foreign('category_id')->references('id')->on('master_categories')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

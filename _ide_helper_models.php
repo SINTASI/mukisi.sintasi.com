@@ -104,6 +104,55 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Map
+ *
+ * @property int $id
+ * @property string|null $code
+ * @property string|null $name
+ * @property-read \App\Models\MapsLine|null $latlng
+ * @method static \Illuminate\Database\Eloquent\Builder|Map newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Map newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Map query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Map whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Map whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Map whereName($value)
+ */
+	class Map extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\MapsLine
+ *
+ * @property int $id
+ * @property string|null $map_code
+ * @property string|null $name
+ * @property string|null $ibukota
+ * @property float|null $lat latitude in degrees
+ * @property float|null $lng longitude in degrees
+ * @property float $elv elevation in meters
+ * @property int|null $tz timezone in hour
+ * @property string|null $path boundaries/polygon area
+ * @property int|null $status
+ * @method static \Illuminate\Database\Eloquent\Builder|MapsLine newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MapsLine newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MapsLine query()
+ * @method static \Illuminate\Database\Eloquent\Builder|MapsLine whereElv($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MapsLine whereIbukota($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MapsLine whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MapsLine whereLat($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MapsLine whereLng($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MapsLine whereMapCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MapsLine whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MapsLine wherePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MapsLine whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MapsLine whereTz($value)
+ */
+	class MapsLine extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\MasterCategory
  *
  * @property int $id
@@ -215,6 +264,7 @@ namespace App\Models{
  * @property string|null $email
  * @property string|null $username
  * @property string|null $no_anggota
+ * @property string|null $institusi_name
  * @property string|null $type
  * @property int|null $category_id
  * @property \Illuminate\Support\Carbon|null $email_verified_at
@@ -222,6 +272,23 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $rs_type A, B, D, C
+ * @property string|null $akreditasi Dasar, Madya, Utama, Paripurna
+ * @property string|null $klinik Klinik Utama, Klinik Pratama
+ * @property string|null $lab Madya, Pratama, utama
+ * @property string|null $pendidikan SMK Kesehatan, AKADEMI/STIKES, Universitas
+ * @property string|null $no_tlp_rs
+ * @property string|null $no_tlp
+ * @property string|null $no_wa
+ * @property string|null $img_rs
+ * @property string|null $img_ktp
+ * @property string|null $kehalian_khusus
+ * @property string|null $alamat
+ * @property string|null $prov_code
+ * @property string|null $kab_code
+ * @property string|null $kec_code
+ * @property string|null $kel_code
+ * @property int|null $profesi_id
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
@@ -234,15 +301,33 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User permission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
  * @method static \Illuminate\Database\Eloquent\Builder|User role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAkreditasi($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAlamat($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereImgKtp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereImgRs($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereInstitusiName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereKabCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereKecCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereKehalianKhusus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereKelCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereKlinik($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLab($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereNoAnggota($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNoTlp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNoTlpRs($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNoWa($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePendidikan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereProfesiId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereProvCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRsType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)

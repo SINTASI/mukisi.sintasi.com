@@ -20,7 +20,7 @@ class MasterCategory extends Model
 
     public static function loadHtml($selected = null)
     {
-        $html = '<option value="null">Pilih</option>';
+        $html = '<option value>Pilih Kategori</option>';
         $qry = MasterCategory::where('type', 'anggota')->orderBy('name');
         foreach ($qry->get() as $cat) {
             $is_selected = $selected !== $cat->id ?: 'selected';

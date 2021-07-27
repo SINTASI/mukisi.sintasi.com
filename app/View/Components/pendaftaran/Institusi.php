@@ -2,6 +2,7 @@
 
 namespace App\View\Components\pendaftaran;
 
+use App\Models\Map;
 use App\Models\MasterCategory;
 use Illuminate\View\Component;
 
@@ -26,6 +27,8 @@ class Institusi extends Component
     {
         return view('components.pendaftaran.institusi', [
             'category' => MasterCategory::loadHtml(),
+            'mapscript' => Map::loadScript(),
+            'prov' => Map::loadProv(),
         ]);
     }
 }

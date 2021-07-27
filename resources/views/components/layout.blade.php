@@ -21,11 +21,19 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/template/styles/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons|Material+Icons+Outlined|Material+Icons+Round"
+        rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('/template/fonts/css/fontawesome-all.min.css') }}">
     <link rel="manifest" href="{{ asset('/template/_manifest.json') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/template/app/icons/icon-192x192.png') }}">
 
+    <style>
+        .material-icons {
+            font-size: inherit;
+        }
 
+    </style>
 
     @stack('style')
 </head>
