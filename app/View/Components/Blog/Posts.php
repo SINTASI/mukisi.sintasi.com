@@ -36,11 +36,9 @@ class Posts extends Component
 
     public function loadPosts()
     {
-
-        $pos = Async::run(fn () => Http::get(env('WP_API') . '/posts')->object())->wait();
-        return $pos[0];
-
-        // $response  = Http::get(env('WP_API') . '/posts');
-        // return $response->object();
+        // $pos = Async::run(fn () => Http::get(env('WP_API') . '/posts')->object())->wait();
+        // return $pos[0];
+        $response  = Http::get(env('WP_API') . '/posts');
+        return $response->object();
     }
 }
