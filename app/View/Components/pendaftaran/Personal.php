@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\pendaftaran;
+namespace App\View\Components\Pendaftaran;
 
 use App\Models\Map;
 use App\Models\MasterCategory;
