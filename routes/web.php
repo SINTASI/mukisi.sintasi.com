@@ -2,6 +2,7 @@
 
 use App\Models\Map;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
+// Route::get('/', function () {
+//     $response  = Http::get(env('WP_URL') . '/wp-json');
+//     $config = $response->object();
+//     return $config->name;
+// });
+
+
 
 Route::get('/', fn () => view('users.landing'));
 

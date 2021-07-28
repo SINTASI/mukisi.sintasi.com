@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "18794441aaf6caff2187e7d372916177",
+    "content-hash": "056f6a448a847ab4fcaf94c2045cce39",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -61,131 +61,6 @@
                 "source": "https://github.com/asm89/stack-cors/tree/v2.0.3"
             },
             "time": "2021-03-11T06:42:03+00:00"
-        },
-        {
-            "name": "bjuppa/laravel-blog",
-            "version": "v1.8.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bjuppa/laravel-blog.git",
-                "reference": "f6a102d63efb673d412ff59bc2060d5262fbdfb3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bjuppa/laravel-blog/zipball/f6a102d63efb673d412ff59bc2060d5262fbdfb3",
-                "reference": "f6a102d63efb673d412ff59bc2060d5262fbdfb3",
-                "shasum": ""
-            },
-            "require": {
-                "bjuppa/metatagbag": "^1.0",
-                "illuminate/database": "5.6.*|| 5.7.* || 5.8.* || ^6 || ^7 || ^8",
-                "illuminate/http": "5.6.* || 5.7.* || 5.8.* || ^6 || ^7 || ^8",
-                "illuminate/routing": "5.6.* || 5.7.* || 5.8.* || ^6 || ^7 || ^8",
-                "illuminate/support": "~5.6.8 || 5.7.* || 5.8.* || ^6 || ^7 || ^8",
-                "illuminate/view": "5.6.* || 5.7.* || 5.8.* || ^6 || ^7 || ^8",
-                "league/commonmark": "^1.3",
-                "php": "^7.3 || ^8.0",
-                "spatie/laravel-sluggable": "^2.1"
-            },
-            "require-dev": {
-                "andrefigueira/blog-article-faker": "dev-replace-fzaninotto",
-                "laravel/framework": ">=5.6.25",
-                "laravel/legacy-factories": "*",
-                "mockery/mockery": "^1.0",
-                "orchestra/testbench": "~3.6.7 || ~3.7.8 || ~3.8.6 || ^4.8 || ^5.2 || ^6.0",
-                "phpunit/phpunit": ">=7.5",
-                "squizlabs/php_codesniffer": "^3.3"
-            },
-            "suggest": {
-                "bjuppa/laravel-blog-admin": "An optional admin interface for the Eloquent blogs configured in bjuppa/laravel-blog"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Bjuppa\\LaravelBlog\\BlogServiceProvider"
-                    ],
-                    "aliases": []
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Bjuppa\\LaravelBlog\\": "src/",
-                    "Bjuppa\\LaravelBlog\\Database\\Seeds\\": "database/seeds/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Björn Nilsved",
-                    "email": "nilsved@gmail.com"
-                }
-            ],
-            "description": "Add blog functionality to your Laravel project",
-            "homepage": "https://github.com/bjuppa/laravel-blog",
-            "keywords": [
-                "blog",
-                "laravel"
-            ],
-            "support": {
-                "issues": "https://github.com/bjuppa/laravel-blog/issues",
-                "source": "https://github.com/bjuppa/laravel-blog/tree/v1.8.2"
-            },
-            "time": "2021-04-01T17:54:25+00:00"
-        },
-        {
-            "name": "bjuppa/metatagbag",
-            "version": "v1.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bjuppa/metatagbag.git",
-                "reference": "7309c72caeda30a6e780422b1151bd4aa67a447a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bjuppa/metatagbag/zipball/7309c72caeda30a6e780422b1151bd4aa67a447a",
-                "reference": "7309c72caeda30a6e780422b1151bd4aa67a447a",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "^5.6 || ^6 || ^7 || ^8",
-                "illuminate/support": "^5.6 || ^6 || ^7 || ^8",
-                "php": "^7.1.0 || ^8.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.3.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Bjuppa\\MetaTagBag\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Björn Nilsved",
-                    "email": "nilsved@gmail.com"
-                }
-            ],
-            "description": "A convenient collection for HTML meta tags",
-            "keywords": [
-                "bag",
-                "collection",
-                "laravel",
-                "meta-tag"
-            ],
-            "support": {
-                "issues": "https://github.com/bjuppa/metatagbag/issues",
-                "source": "https://github.com/bjuppa/metatagbag/tree/v1.1.3"
-            },
-            "time": "2021-03-21T11:04:27+00:00"
         },
         {
             "name": "brick/math",
@@ -2913,6 +2788,73 @@
             "time": "2021-07-17T17:42:40+00:00"
         },
         {
+            "name": "spatie/async",
+            "version": "1.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/async.git",
+                "reference": "d371b76ff876530c4906596490fd977720477e48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/async/zipball/d371b76ff876530c4906596490fd977720477e48",
+                "reference": "d371b76ff876530c4906596490fd977720477e48",
+                "shasum": ""
+            },
+            "require": {
+                "opis/closure": "^3.4.2",
+                "php": "^7.1 || ^8.0",
+                "symfony/process": "^3.3 || ^4.0 || ^5.0"
+            },
+            "require-dev": {
+                "larapack/dd": "^1.1",
+                "phpunit/phpunit": "^7.5 || ^8.0 || ^9.0",
+                "symfony/stopwatch": "^4.0 || ^5.0"
+            },
+            "suggest": {
+                "ext-pcntl": "Required to use async processes",
+                "ext-posix": "Required to use async processes"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Spatie\\Async\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brent Roose",
+                    "email": "brent@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Asynchronous and parallel PHP with the PCNTL extension",
+            "homepage": "https://github.com/spatie/async",
+            "keywords": [
+                "async",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/async/issues",
+                "source": "https://github.com/spatie/async/tree/1.5.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-12-29T22:19:12+00:00"
+        },
+        {
             "name": "spatie/image",
             "version": "1.10.5",
             "source": {
@@ -3216,67 +3158,6 @@
                 }
             ],
             "time": "2021-06-04T23:47:08+00:00"
-        },
-        {
-            "name": "spatie/laravel-sluggable",
-            "version": "2.6.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-sluggable.git",
-                "reference": "297097239a675747d74fbd1ecb3ae0d4724a17de"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-sluggable/zipball/297097239a675747d74fbd1ecb3ae0d4724a17de",
-                "reference": "297097239a675747d74fbd1ecb3ae0d4724a17de",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "^7.30|^8.0",
-                "illuminate/support": "^7.30|^8.0",
-                "php": "^7.4|^8.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.18",
-                "orchestra/testbench": "^5.16|^6.11",
-                "phpunit/phpunit": "^9.5.1",
-                "spatie/laravel-translatable": "^4.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\Sluggable\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Generate slugs when saving Eloquent models",
-            "homepage": "https://github.com/spatie/laravel-sluggable",
-            "keywords": [
-                "laravel-sluggable",
-                "spatie"
-            ],
-            "support": {
-                "issues": "https://github.com/spatie/laravel-sluggable/issues",
-                "source": "https://github.com/spatie/laravel-sluggable/tree/2.6.2"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/spatie",
-                    "type": "github"
-                }
-            ],
-            "time": "2021-03-20T18:07:00+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -5850,6 +5731,69 @@
                 }
             ],
             "time": "2020-11-12T00:07:28+00:00"
+        },
+        {
+            "name": "vxm/laravel-async",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vuongxuongminh/laravel-async.git",
+                "reference": "2234595ac528546ec1a169c75e4a37fffeb35bea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vuongxuongminh/laravel-async/zipball/2234595ac528546ec1a169c75e4a37fffeb35bea",
+                "reference": "2234595ac528546ec1a169c75e4a37fffeb35bea",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.8 || ^6.0 || ^7.0 || ^8.0",
+                "php": "^7.2 || ^8.0",
+                "spatie/async": "~1.5.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.8 || ^4.0 || ^5.0 || ^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                },
+                "laravel": {
+                    "aliases": {
+                        "Async": "VXM\\Async\\AsyncFacade"
+                    },
+                    "providers": [
+                        "VXM\\Async\\AsyncServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "VXM\\Async\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vuong Xuong Minh",
+                    "email": "vuongxuongminh@gmail.com"
+                }
+            ],
+            "description": "Provide an easy way to run code asynchronously for Laravel",
+            "homepage": "https://github.com/vuongxuongminh/laravel-async",
+            "keywords": [
+                "laravel-async",
+                "vxm"
+            ],
+            "support": {
+                "issues": "https://github.com/vuongxuongminh/laravel-async/issues",
+                "source": "https://github.com/vuongxuongminh/laravel-async/tree/2.1.0"
+            },
+            "time": "2021-02-07T04:25:03+00:00"
         },
         {
             "name": "webmozart/assert",

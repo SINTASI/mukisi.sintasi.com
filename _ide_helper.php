@@ -15790,6 +15790,71 @@
      
 }
 
+    namespace VXM\Async { 
+            /**
+     * 
+     *
+     * @author Vuong Minh <vuongxuongminh@gmail.com>
+     * @since 1.0.0
+     */ 
+        class AsyncFacade {
+                    /**
+         * Execute async job.
+         *
+         * @param callable|string|object $job need to execute.
+         * @param array $events event. Have key is an event name, value is a callable triggered when event
+         *                                       happen, have three events `error`, `success`, `timeout`.
+         * @param int|null $outputLength
+         * @return static 
+         * @static 
+         */ 
+        public static function run($job, $events = [], $outputLength = null)
+        {
+                        /** @var \VXM\Async\Async $instance */
+                        return $instance->run($job, $events, $outputLength);
+        }
+                    /**
+         * Batch execute async jobs.
+         *
+         * @param array $jobs
+         * @return static 
+         * @see run()
+         * @since 2.0.0
+         * @static 
+         */ 
+        public static function batchRun(...$jobs)
+        {
+                        /** @var \VXM\Async\Async $instance */
+                        return $instance->batchRun(...$jobs);
+        }
+                    /**
+         * Wait until all async jobs done and return job results.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function wait()
+        {
+                        /** @var \VXM\Async\Async $instance */
+                        return $instance->wait();
+        }
+                    /**
+         * Get current pool.
+         *
+         * @return \VXM\Async\Pool 
+         * @since 2.1.0
+         * @static 
+         */ 
+        public static function getPool()
+        {
+                        /** @var \VXM\Async\Async $instance */
+                        return $instance->getPool();
+        }
+         
+    }
+     
+}
+
     namespace Illuminate\Http { 
             /**
      * 
@@ -19201,6 +19266,7 @@ namespace  {
             class View extends \Illuminate\Support\Facades\View {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
             class Image extends \Intervention\Image\Facades\Image {}
+            class Async extends \VXM\Async\AsyncFacade {}
      
 }
 
