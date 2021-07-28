@@ -2,8 +2,8 @@
     <div class="content mb-0">
         @foreach ($posts as $post)
 
-            <a href="#" class="mb-4 d-block bg-20">
-                <img src="{{ asset('/template/images/pictures/8w.jpg') }}" class="img-fluid rounded-sm">
+            <a href="{{ $post->link }}" class="mb-4 d-block" target="_blank">
+                <img src="{{ asset('/template/images/pictures/8w.jpg') }}" class="img-fluid rounded-sm bg-20">
                 <h5 class="font-600 pt-2">{{ $post->title->rendered }}</h5>
                 <span class="color-highlight opacity-60">{!! $post->excerpt->rendered !!}</span>
             </a>
