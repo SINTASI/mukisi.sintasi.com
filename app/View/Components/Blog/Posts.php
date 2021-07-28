@@ -8,14 +8,17 @@ use Illuminate\Support\Facades\Http;
 
 class Posts extends Component
 {
-    public array $posts;
+    public $posts;
+
+    public $perPage;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($perPage = 10)
     {
+        $this->perPage = (int) $perPage;
         $this->posts = $this->loadPosts();
     }
 
@@ -38,7 +41,10 @@ class Posts extends Component
     {
         // $pos = Async::run(fn () => Http::get(env('WP_API') . '/posts')->object())->wait();
         // return $pos[0];
-        $response  = Http::get(env('WP_API') . '/posts');
+        $response  = Http::get(env('WP_API') . '/posts', [
+            'per_page' => $this->perPage,
+            'status' => 'publish'
+        ]);
         return $response->object();
     }
 }

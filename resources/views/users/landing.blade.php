@@ -9,7 +9,7 @@
         <x-slider-home></x-slider-home>
         <x-menu-home></x-menu-home>
 
-        <x-blog.posts></x-blog.posts>
+        <x-blog.posts per-page="5"></x-blog.posts>
 
         <div class="row mb-0">
             <a href="#" class="col-6 pe-0">

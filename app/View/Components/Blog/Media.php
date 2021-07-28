@@ -8,18 +8,19 @@ use Illuminate\Support\Facades\Http;
 
 class Media extends Component
 {
+    public $type;
+    public $size;
     public $media;
-
-    public string $type;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($mediaId, $type = 'images')
+    public function __construct($mediaId, $type = 'images', $size = 'medium_large')
     {
         $this->media = $this->loadMedia($mediaId);
         $this->type = $type;
+        $this->size = $size;
     }
 
     /**
