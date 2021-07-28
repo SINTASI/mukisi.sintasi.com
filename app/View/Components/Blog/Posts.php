@@ -29,6 +29,10 @@ class Posts extends Component
         return view('components.blog.posts');
     }
 
+    public function redirect($url)
+    {
+        // return redirect($url);
+    }
 
     public function loadPosts()
     {
