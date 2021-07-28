@@ -8,6 +8,8 @@ use Illuminate\View\Component;
 
 class Personal extends Component
 {
+    public $prov;
+    public $mapscript;
     /**
      * Create a new component instance.
      *
@@ -15,7 +17,8 @@ class Personal extends Component
      */
     public function __construct()
     {
-        //
+        $this->mapscript =  Map::loadScript();
+        $this->prov =  Map::loadProv();
     }
 
     /**
@@ -25,9 +28,6 @@ class Personal extends Component
      */
     public function render()
     {
-        return view('components.pendaftaran.personal', [
-            'mapscript' => Map::loadScript(),
-            'prov' => Map::loadProv(),
-        ]);
+        return view('components.pendaftaran.personal');
     }
 }

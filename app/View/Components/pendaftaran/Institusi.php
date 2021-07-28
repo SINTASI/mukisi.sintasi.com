@@ -8,6 +8,10 @@ use Illuminate\View\Component;
 
 class Institusi extends Component
 {
+    public $prov;
+    public $category;
+    public $mapscript;
+
     /**
      * Create a new component instance.
      *
@@ -15,7 +19,9 @@ class Institusi extends Component
      */
     public function __construct()
     {
-        //
+        $this->category =  MasterCategory::loadHtml();
+        $this->mapscript =  Map::loadScript();
+        $this->prov =  Map::loadProv();
     }
 
     /**
@@ -25,10 +31,6 @@ class Institusi extends Component
      */
     public function render()
     {
-        return view('components.pendaftaran.institusi', [
-            'category' => MasterCategory::loadHtml(),
-            'mapscript' => Map::loadScript(),
-            'prov' => Map::loadProv(),
-        ]);
+        return view('components.pendaftaran.institusi');
     }
 }
