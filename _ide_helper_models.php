@@ -49,6 +49,77 @@ namespace App\Models\Admin{
 
 namespace App\Models{
 /**
+ * App\Models\Form
+ *
+ * @property int $id
+ * @property string $key
+ * @property string $label
+ * @property string|null $data
+ * @property string $icon
+ * @property string $type
+ * @property int $required
+ * @property string|null $placeholder
+ * @property int $is_active
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\FormLine[] $subs
+ * @property-read int|null $subs_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Form newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Form newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Form query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Form whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Form whereData($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Form whereIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Form whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Form whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Form whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Form whereLabel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Form wherePlaceholder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Form whereRequired($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Form whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Form whereUpdatedAt($value)
+ */
+	class Form extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\FormLine
+ *
+ * @property int $id
+ * @property string $key
+ * @property string $label
+ * @property string|null $data
+ * @property string $icon
+ * @property string $type
+ * @property int $required
+ * @property string|null $placeholder
+ * @property int $form_id
+ * @property int $is_active
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Form $form
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine query()
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine whereData($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine whereFormId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine whereIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine whereLabel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine wherePlaceholder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine whereRequired($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FormLine whereUpdatedAt($value)
+ */
+	class FormLine extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Map
  *
  * @property int $id

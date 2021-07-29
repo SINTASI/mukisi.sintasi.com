@@ -31,43 +31,39 @@
     </div>
 
 
-    <div class="input-style no-borders has-icon validate-field mb-4">
-        <i class="fa fa-list"></i>
-        <select name="rs_type" id="rs_type" class="form-control validate" required>
-            <option value>Pilih Tipe Rumah Sakit</option>
-            <option value="Tipe A">Tipe A</option>
-            <option value="Tipe B">Tipe B</option>
-            <option value="Tipe C">Tipe C</option>
-            <option value="Tipe D">Tipe D</option>
-        </select>
-        <label for="rs_type" class="color-highlight">Tipe Rumah Sakit</label>
-        <i class="fa fa-times disabled invalid color-red-dark"></i>
-        <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div>
 
-    <div class="input-style no-borders has-icon validate-field mb-4">
-        <i class="fa fa-list"></i>
-        <select name="akreditasi" id="akreditasi" class="form-control validate" required>
-            <option value>Pilih Akreditasi</option>
-            <option value="Dasar">Dasar</option>
-            <option value="Madya">Madya</option>
-            <option value="Utama">Utama</option>
-            <option value="Paripurna">Paripurna</option>
-        </select>
-        <label for="akreditasi" class="color-highlight">Akreditasi</label>
-        <i class="fa fa-times disabled invalid color-red-dark"></i>
-        <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div>
+    @foreach ($forms as $form)
+        <div class="input-style no-borders has-icon validate-field mb-4">
+            <i class="material-icons">{{ $form->icon }}</i>
+            <select name="{{ $form->key }}" id="{{ $form->key }}" class="form-control validate"
+                {{ !$form->required ?: 'required' }} onchange="showSubFrom('{{ $form->label }}')">
+                {!! $category !!}
+            </select>
+            <label for="{{ $form->key }}" class="color-highlight">{{ $form->label }}</label>
+            <i class="fa fa-times disabled invalid color-red-dark"></i>
+            <i class="fa fa-check disabled valid color-green-dark"></i>
+        </div>
 
-    <div class="input-style no-borders has-icon validate-field mb-4">
-        <i class="fa fa-list"></i>
-        <select name="category_id" id="category_id" class="form-control validate" required>
-            {!! $category !!}
-        </select>
-        <label for="category_id" class="color-highlight">Kategori</label>
-        <i class="fa fa-times disabled invalid color-red-dark"></i>
-        <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div>
+        @foreach ($form->subs as $sub)
+            @if ($sub->type === 'select')
+                <div class="input-style no-borders has-icon validate-field mb-4" id="{{ $sub->label }}"
+                    style="display: none">
+                    <i class="material-icons">{{ $sub->icon }}</i>
+                    <select name="{{ $sub->key }}" id="{{ $sub->key }}" class="form-control validate"
+                        {{ !$sub->required ?: 'required' }}>
+                        <option value>Pilih {{ $sub->label }}</option>
+                        @foreach (json_decode($sub->data) as $data)
+                            <option value="{{ $data }}">{{ $data }}</option>
+                        @endforeach
+                    </select>
+                    <label for="{{ $sub->key }}" class="color-highlight">{{ $sub->label }}</label>
+                    <i class="fa fa-times disabled invalid color-red-dark"></i>
+                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                </div>
+            @endif
+        @endforeach
+
+    @endforeach
 
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-list"></i>
@@ -160,20 +156,24 @@
 
     <div class="row pt-3 mb-3">
         <div class="col-6 text-start">
-            <a href="page-forgot-1.html">Lupa Password?</a>
+            <a href="#">Lupa Password?</a>
         </div>
         <div class="col-6 text-end">
-            <a href="page-signin-1.html">Login disini!</a>
+            <a href="#">Login disini!</a>
         </div>
     </div>
 
 
 </div>
 
-
+<script>
+    function showSubFrom(label) {
+        console.log(label);
+        console.log(document.getElementById(label));
+        $(`#${label}`).fadeIn();
+    }
+    // $(document).on('change', '#category_id', function() {
+    //     console.log($(this).val())
+    // })
+</script>
 {!! $mapscript !!}
-
-
-<style>
-
-</style>

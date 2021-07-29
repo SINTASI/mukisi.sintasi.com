@@ -3823,6 +3823,50 @@
                         return $instance->macroCall($method, $parameters);
         }
                     /**
+         * Remove all items from the cache.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function flush()
+        {
+                        /** @var \Illuminate\Cache\FileStore $instance */
+                        return $instance->flush();
+        }
+                    /**
+         * Get the Filesystem instance.
+         *
+         * @return \Illuminate\Filesystem\Filesystem 
+         * @static 
+         */ 
+        public static function getFilesystem()
+        {
+                        /** @var \Illuminate\Cache\FileStore $instance */
+                        return $instance->getFilesystem();
+        }
+                    /**
+         * Get the working directory of the cache.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getDirectory()
+        {
+                        /** @var \Illuminate\Cache\FileStore $instance */
+                        return $instance->getDirectory();
+        }
+                    /**
+         * Get the cache key prefix.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getPrefix()
+        {
+                        /** @var \Illuminate\Cache\FileStore $instance */
+                        return $instance->getPrefix();
+        }
+                    /**
          * Get a lock instance.
          *
          * @param string $name
@@ -3833,7 +3877,7 @@
          */ 
         public static function lock($name, $seconds = 0, $owner = null)
         {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
+                        /** @var \Illuminate\Cache\FileStore $instance */
                         return $instance->lock($name, $seconds, $owner);
         }
                     /**
@@ -3846,53 +3890,8 @@
          */ 
         public static function restoreLock($name, $owner)
         {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
+                        /** @var \Illuminate\Cache\FileStore $instance */
                         return $instance->restoreLock($name, $owner);
-        }
-                    /**
-         * Remove all items from the cache.
-         *
-         * @return bool 
-         * @static 
-         */ 
-        public static function flush()
-        {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
-                        return $instance->flush();
-        }
-                    /**
-         * Get the underlying database connection.
-         *
-         * @return \Illuminate\Database\MySqlConnection 
-         * @static 
-         */ 
-        public static function getConnection()
-        {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
-                        return $instance->getConnection();
-        }
-                    /**
-         * Specify the name of the connection that should be used to manage locks.
-         *
-         * @param \Illuminate\Database\ConnectionInterface $connection
-         * @return \Illuminate\Cache\DatabaseStore 
-         * @static 
-         */ 
-        public static function setLockConnection($connection)
-        {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
-                        return $instance->setLockConnection($connection);
-        }
-                    /**
-         * Get the cache key prefix.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getPrefix()
-        {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
-                        return $instance->getPrefix();
         }
          
     }
@@ -15791,71 +15790,6 @@
      
 }
 
-    namespace VXM\Async { 
-            /**
-     * 
-     *
-     * @author Vuong Minh <vuongxuongminh@gmail.com>
-     * @since 1.0.0
-     */ 
-        class AsyncFacade {
-                    /**
-         * Execute async job.
-         *
-         * @param callable|string|object $job need to execute.
-         * @param array $events event. Have key is an event name, value is a callable triggered when event
-         *                                       happen, have three events `error`, `success`, `timeout`.
-         * @param int|null $outputLength
-         * @return static 
-         * @static 
-         */ 
-        public static function run($job, $events = [], $outputLength = null)
-        {
-                        /** @var \VXM\Async\Async $instance */
-                        return $instance->run($job, $events, $outputLength);
-        }
-                    /**
-         * Batch execute async jobs.
-         *
-         * @param array $jobs
-         * @return static 
-         * @see run()
-         * @since 2.0.0
-         * @static 
-         */ 
-        public static function batchRun(...$jobs)
-        {
-                        /** @var \VXM\Async\Async $instance */
-                        return $instance->batchRun(...$jobs);
-        }
-                    /**
-         * Wait until all async jobs done and return job results.
-         *
-         * @return array 
-         * @static 
-         */ 
-        public static function wait()
-        {
-                        /** @var \VXM\Async\Async $instance */
-                        return $instance->wait();
-        }
-                    /**
-         * Get current pool.
-         *
-         * @return \VXM\Async\Pool 
-         * @since 2.1.0
-         * @static 
-         */ 
-        public static function getPool()
-        {
-                        /** @var \VXM\Async\Async $instance */
-                        return $instance->getPool();
-        }
-         
-    }
-     
-}
-
     namespace Illuminate\Http { 
             /**
      * 
@@ -19267,7 +19201,6 @@ namespace  {
             class View extends \Illuminate\Support\Facades\View {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
             class Image extends \Intervention\Image\Facades\Image {}
-            class Async extends \VXM\Async\AsyncFacade {}
      
 }
 

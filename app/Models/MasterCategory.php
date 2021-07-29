@@ -23,8 +23,8 @@ class MasterCategory extends Model
         $html = '<option value>Pilih Kategori</option>';
         $qry = MasterCategory::where('type', 'anggota')->orderBy('name');
         foreach ($qry->get() as $cat) {
-            $is_selected = $selected !== $cat->id ?: 'selected';
-            $html .= "<option value='$cat->id' $is_selected>$cat->name </option>";
+            $is_selected = $selected === $cat->id ? 'selected' : '';
+            $html .= "<option value='$cat->id' $is_selected>$cat->name</option>";
         }
         return $html;
     }
