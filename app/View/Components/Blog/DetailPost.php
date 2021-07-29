@@ -39,7 +39,7 @@ class DetailPost extends Component
             $response = Http::get(env('WP_API') . "/posts", [
                 'slug' => $slug
             ]);
-            $post = $response[0]->object();
+            $post = $response->object()[0];
             $post->media = $this->loadMedia($post->featured_media);
             return $post;
         });
