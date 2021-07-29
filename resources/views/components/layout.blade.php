@@ -36,6 +36,7 @@
     </style>
 
     @stack('style')
+    <script type="text/javascript" src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
 </head>
 
 <body class="theme-light" data-highlight="highlight-red">
@@ -48,7 +49,7 @@
     </div>
 
 
-    <script type="text/javascript" src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
+
     <script type="text/javascript" src="{{ asset('/template/scripts/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/template/scripts/custom.js') }}"></script>
     <script src="https://use.fontawesome.com/452826394c.js"></script>

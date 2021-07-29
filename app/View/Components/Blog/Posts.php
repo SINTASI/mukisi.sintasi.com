@@ -2,9 +2,9 @@
 
 namespace App\View\Components\Blog;
 
-use Async;
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 
 class Posts extends Component
 {
@@ -39,12 +39,15 @@ class Posts extends Component
 
     public function loadPosts()
     {
-        // $pos = Async::run(fn () => Http::get(env('WP_API') . '/posts')->object())->wait();
-        // return $pos[0];
-        $response  = Http::get(env('WP_API') . '/posts', [
-            'per_page' => $this->perPage,
-            'status' => 'publish'
-        ]);
-        return $response->object();
+        if (Cache::has("posts_$this->perPage")) {
+            return Cache::get("posts_$this->perPage", []);
+        }
+
+        return Cache::remember("posts_$this->perPage", now()->addMinutes(60), function () {
+            return Http::get(env('WP_API') . '/posts', [
+                'per_page' => $this->perPage,
+                'status' => 'publish'
+            ])->object();
+        });
     }
 }

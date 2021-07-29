@@ -49,61 +49,6 @@ namespace App\Models\Admin{
 
 namespace App\Models{
 /**
- * App\Models\Blog
- *
- * @property int $id
- * @property string $blog
- * @property \Illuminate\Support\Carbon|null $publish_after
- * @property string $slug
- * @property string $title
- * @property string|null $author_name
- * @property string|null $author_email
- * @property string|null $author_url
- * @property string|null $image
- * @property string $content
- * @property string|null $summary
- * @property string|null $page_title
- * @property string|null $description
- * @property array|null $meta_tags
- * @property int|null $display_full_content_in_feed
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property mixed $json_meta_tags
- * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
- * @property-read int|null $media_count
- * @method static \Illuminate\Database\Eloquent\Builder|AbstractBlogEntry blog($blog_id)
- * @method static \Illuminate\Database\Eloquent\Builder|AbstractBlogEntry latestPublication()
- * @method static \Illuminate\Database\Eloquent\Builder|Blog newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Blog newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|AbstractBlogEntry oldestPublication()
- * @method static \Illuminate\Database\Eloquent\Builder|AbstractBlogEntry publishedAfterEntry(\Bjuppa\LaravelBlog\Eloquent\AbstractBlogEntry $entry)
- * @method static \Illuminate\Database\Eloquent\Builder|AbstractBlogEntry publishedBeforeEntry(\Bjuppa\LaravelBlog\Eloquent\AbstractBlogEntry $entry)
- * @method static \Illuminate\Database\Eloquent\Builder|AbstractBlogEntry publishedRelativeEntry(\Bjuppa\LaravelBlog\Eloquent\AbstractBlogEntry $entry, string $operator = '>')
- * @method static \Illuminate\Database\Eloquent\Builder|Blog query()
- * @method static \Illuminate\Database\Eloquent\Builder|AbstractBlogEntry slug(string $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereAuthorEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereAuthorName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereAuthorUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereBlog($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereContent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereDisplayFullContentInFeed($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereMetaTags($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog wherePageTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog wherePublishAfter($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereSummary($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Blog whereUpdatedAt($value)
- */
-	class Blog extends \Eloquent implements \Spatie\MediaLibrary\HasMedia {}
-}
-
-namespace App\Models{
-/**
  * App\Models\Map
  *
  * @property int $id

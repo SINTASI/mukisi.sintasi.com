@@ -1,5 +1,5 @@
 <div class="header {{ $headerAutoShow ? 'header-auto-show' : '' }}  header-fixed header-logo-center">
-
+    {{-- header header-fixed header-logo-center header-auto-show --}}
     @if (isset($headerTitle))
         <a href="{{ url('/') }}" class="header-title">{{ $headerTitle }}</a>
     @else
@@ -22,8 +22,8 @@
 </div>
 
 @if ($headerAutoShow)
-    <x-page-title></x-page-title>
-    <div class="page-title-clear"></div>
+    {{-- <x-page-title></x-page-title> --}}
+    {{-- <div class="page-title-clear"></div> --}}
 @endif
 
 <x-menu-left></x-menu-left>

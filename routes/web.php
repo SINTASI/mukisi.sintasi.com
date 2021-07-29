@@ -28,6 +28,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('users.landing'));
 
+Route::get('/post/{slug}', function ($slug) {
+    return view('users.post', [
+        'slug' => $slug
+    ]);
+});
+
 Route::resource('/pendaftaran', 'PendaftaranController');
 
 

@@ -1110,7 +1110,6 @@ document.addEventListener("DOMContentLoaded", () => {
         //Footer Bar Activation
 
         const menuBottom = $(".footer-bar-6 > a");
-        console.log(menuBottom);
         $.each(menuBottom, function (key, el) {
             if (el.href === window.location.href) {
                 $(this).addClass("active-nav").append("<em></em>");
@@ -2406,7 +2405,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Externally loading Javascript files for better performance.
 
         var plugIdent, plugClass, plugMain, plugCall;
-        var plugLoc = "plugins/";
+        var plugLoc = "/template/plugins/";
 
         let plugins = [
             {

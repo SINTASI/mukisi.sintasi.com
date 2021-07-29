@@ -5,6 +5,7 @@ namespace App\View\Components\Blog;
 use Illuminate\View\Component;
 use Illuminate\Http\Client\Pool;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 
 class Media extends Component
 {
@@ -35,11 +36,12 @@ class Media extends Component
 
     public function loadMedia($mediaId)
     {
-        $response = Http::pool(fn (Pool $pool) => [
-            $pool->as($mediaId)->get(env('WP_API') . "/media/$mediaId"),
-        ]);
-        return $response[$mediaId]->object();
-        // $response  = Http::get(env('WP_API') . "/media/$mediaId");
-        // return $response->object();
+        if (Cache::has("media_$mediaId")) {
+            return Cache::get("media_$mediaId", []);
+        }
+
+        return Cache::remember("media_$mediaId", now()->addMinutes(60), function () use ($mediaId) {
+            return Http::get(env('WP_API') . "/media/$mediaId")->object();
+        });
     }
 }
