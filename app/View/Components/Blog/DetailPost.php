@@ -30,7 +30,6 @@ class DetailPost extends Component
         return view('components.blog.detail-post');
     }
 
-
     public function loadPost($slug)
     {
         if (Cache::has("posts_$slug")) {
