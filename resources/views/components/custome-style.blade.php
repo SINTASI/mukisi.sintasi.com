@@ -1,4 +1,9 @@
 <style>
+    .header,.page-title-fixed,.card-fixed,#menu-cards,#menu-colors,#menu-share,#footer-bar{
+        max-width: 550px;
+        margin: auto;
+    }
+
     .footer-bar-6 .circle-nav strong {
         background-image: linear-gradient(to bottom, @setting('color_primary') 0%, @setting('color_secondary') 100%) !important;
     }

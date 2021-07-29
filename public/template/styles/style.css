@@ -5,11 +5,6 @@ html{
     background-color: white;
 }
 
-.header,.page-title-fixed,.card-fixed,#menu-cards,#menu-colors,#menu-share,#footer-bar{
-    max-width: 550px;
-    margin: auto;
-}
-
 .menu-box-left {
     opacity: 0;
     top: 0px !important;
