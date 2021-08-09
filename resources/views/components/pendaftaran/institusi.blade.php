@@ -36,7 +36,7 @@
         <div class="input-style no-borders has-icon validate-field mb-4">
             <i class="material-icons">{{ $form->icon }}</i>
             <select name="{{ $form->key }}" id="{{ $form->key }}" class="form-control validate"
-                {{ !$form->required ?: 'required' }} onchange="showSubFrom('{{ $form->label }}')">
+                {{ !$form->required ?: 'required' }} onchange="showSubFrom('{{ $form->key }}')">
                 {!! $category !!}
             </select>
             <label for="{{ $form->key }}" class="color-highlight">{{ $form->label }}</label>
@@ -46,8 +46,8 @@
 
         @foreach ($form->subs as $sub)
             @if ($sub->type === 'select')
-                <div class="input-style no-borders has-icon validate-field mb-4" id="{{ $sub->label }}"
-                    style="display: none">
+                <div class="input-style no-borders has-icon validate-field mb-4 group_{{ $form->key }}"
+                    id="{{ $form->key }}_{{ $sub->key }}" style="display: none">
                     <i class="material-icons">{{ $sub->icon }}</i>
                     <select name="{{ $sub->key }}" id="{{ $sub->key }}" class="form-control validate"
                         {{ !$sub->required ?: 'required' }}>
@@ -62,7 +62,6 @@
                 </div>
             @endif
         @endforeach
-
     @endforeach
 
     <div class="input-style no-borders has-icon validate-field mb-4">
@@ -118,7 +117,8 @@
 
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-lock"></i>
-        <input type="password" class="form-control validate-password" id="password" placeholder="Masukan Password">
+        <input type="password" class="form-control validate-password" id="password" placeholder="Masukan Password"
+            required>
         <label for="password" class="color-highlight">Masukan Password</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -128,7 +128,7 @@
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-lock"></i>
         <input type="password" class="form-control validate-password" id="password2" name="password"
-            placeholder="Konfirmasi Password">
+            placeholder="Konfirmasi Password" required>
         <label for="password2" class="color-highlight">Konfirmasi Password</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -141,14 +141,12 @@
         <label for="alamat" class="color-highlight">Alamat Rumah Sakit</label>
     </div>
 
+
+    <label for="images" class="color-highlight">Upload foto Rumah Sakit
+    </label>
     <div class="input-style no-borders has-icon validate-field mb-4">
-        <i class="material-icons">file_upload</i>
-        <input type="file" class="form-control validate-file" id="img_rs" name="img_rs"
-            placeholder="Upload foto Rumah Sakit">
-        <label for="img_rs" class="color-highlight">Upload foto Rumah Sakit
-        </label>
-        <i class="fa fa-times disabled invalid color-red-dark"></i>
-        <i class="fa fa-check disabled valid color-green-dark"></i>
+        <input type="file" class="form-control validate-file" id="images" name="images" style="padding-left: 12px;"
+            required>
     </div>
 
     <button class="btn btn-full btn-l font-600 font-13 gradient-highlight mt-4 rounded-s full-width" type="submit">
@@ -167,13 +165,14 @@
 </div>
 
 <script>
-    function showSubFrom(label) {
-        console.log(label);
-        console.log(document.getElementById(label));
-        $(`#${label}`).fadeIn();
+    function showSubFrom(form) {
+        $(`.group_${form}`).hide()
+        const {
+            ref
+        } = $(`#${form}`).find('option').filter(':selected').data()
+        if (ref) {
+            $(`#${form}_${ref}`).fadeIn();
+        }
     }
-    // $(document).on('change', '#category_id', function() {
-    //     console.log($(this).val())
-    // })
 </script>
 {!! $mapscript !!}

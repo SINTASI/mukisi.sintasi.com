@@ -24,7 +24,7 @@ class MasterCategory extends Model
         $qry = MasterCategory::where('type', 'anggota')->orderBy('name');
         foreach ($qry->get() as $cat) {
             $is_selected = $selected === $cat->id ? 'selected' : '';
-            $html .= "<option value='$cat->id' $is_selected>$cat->name</option>";
+            $html .= "<option value='$cat->id' data-ref='$cat->refs' $is_selected>$cat->name</option>";
         }
         return $html;
     }

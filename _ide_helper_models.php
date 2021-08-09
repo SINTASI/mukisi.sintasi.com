@@ -174,6 +174,7 @@ namespace App\Models{
  * @property int $id
  * @property string $name
  * @property string|null $type
+ * @property string|null $refs
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory newModelQuery()
@@ -182,6 +183,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory whereRefs($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MasterCategory whereUpdatedAt($value)
  */

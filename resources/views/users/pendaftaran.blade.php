@@ -4,6 +4,10 @@
 
         <x-header back-button></x-header>
 
+        <div class="text-center">
+            {{ request()->session()->get('error') }}
+        </div>
+
         <div class="card card-style bg-theme pb-0">
             <div class="content" id="tab-group-1">
                 <div class="tab-controls tabs-small tabs-rounded" data-highlight="bg-highlight">

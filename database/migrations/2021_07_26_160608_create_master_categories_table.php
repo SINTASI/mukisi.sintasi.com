@@ -17,6 +17,7 @@ class CreateMasterCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('type')->nullable()->default('anggota');
+            $table->string('refs')->nullable();
             $table->timestamps();
         });
 
