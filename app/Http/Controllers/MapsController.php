@@ -10,6 +10,7 @@ class MapsController extends Controller
     public function getProv(Request $request)
     {
         return Map::loadProv($request->query('isObj', false));
+        // return Map::groupAll();
     }
 
     public function getKab(Request $request)

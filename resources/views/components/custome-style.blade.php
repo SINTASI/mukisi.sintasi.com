@@ -1,5 +1,11 @@
 <style>
-    .header,.page-title-fixed,.card-fixed,#menu-cards,#menu-colors,#menu-share,#footer-bar{
+    .header,
+    .page-title-fixed,
+    .card-fixed,
+    #menu-cards,
+    #menu-colors,
+    #menu-share,
+    #footer-bar {
         max-width: 550px;
         margin: auto;
     }

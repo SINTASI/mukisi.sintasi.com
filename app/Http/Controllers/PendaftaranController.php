@@ -41,18 +41,25 @@ class PendaftaranController extends Controller
      */
     public function store(Request $request)
     {
+        $type = request('type', 'personal');
         try {
             $request->validate([
                 'email' => 'unique:users,email'
             ]);
+
             $data = $request->all();
-            $data['img_rs'] = $request->file('images')->store('images');
+            if ($type === 'institusi') {
+                $data['img_rs'] = $request->file('images')->store('images');
+            }
+
+
             $data['password'] = bcrypt($request->password);
             User::create($data);
             return redirect('/login')->with('message', 'Pendaftaran behasil');
         } catch (\Throwable $err) {
-            return redirect('/pendaftaran?type=institusi')
-                ->with('error', $err->getMessage());
+            return redirect("/pendaftaran?type=$type")
+                ->with('error', $err->getMessage())
+                ->withInput($request->except('password'));
         }
     }
 

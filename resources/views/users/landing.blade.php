@@ -6,43 +6,13 @@
     <x-menu-bottom></x-menu-bottom>
 
     <x-page-content>
+
         <x-slider-home></x-slider-home>
+
         <x-menu-home></x-menu-home>
 
         <x-blog.posts per-page="5"></x-blog.posts>
 
-        <div class="row mb-0">
-            <a href="#" class="col-6 pe-0">
-                <div class="card mr-0 card-style">
-                    <div class="d-flex pt-3 pb-3">
-                        <div class="align-self-center">
-                            <i class="fa fa-home color-green-light ms-3 font-34 mt-1"></i>
-                        </div>
-                        <div class="align-self-center">
-                            <h5 class="ps-2 ms-1 mb-0">PWA <br> Ready</h5>
-                        </div>
-                    </div>
-                    <p class="px-3">
-                        Enjoy Mukisi from your Home Screen.
-                    </p>
-                </div>
-            </a>
-            <a href="#" class="col-6 ps-0">
-                <div class="card ml-0 card-style">
-                    <div class="d-flex pt-3 pb-3">
-                        <div class="align-self-center">
-                            <i class="fa fa-cog color-blue-dark ms-3 font-34 mt-1"></i>
-                        </div>
-                        <div class="align-self-center">
-                            <h5 class="ps-2 ms-1 mb-0">Clean<br>Code</h5>
-                        </div>
-                    </div>
-                    <p class="px-3">
-                        Powered by Bootstrap makes your job easier!
-                    </p>
-                </div>
-            </a>
-        </div>
 
         <a href="#" data-toggle-theme>
             <div class="card card-style">

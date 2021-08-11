@@ -55,7 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
             var nameValidator =
                 /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
-            var passwordValidator = /[A-Za-z]{2}[A-Za-z]*[ ]?[A-Za-z]*/;
+            // var passwordValidator = /[A-Za-z]{2}[A-Za-z]*[ ]?[A-Za-z]*/;
+            var passwordValidator = "";
             var numberValidator = /^(0|[1-9]\d*)$/;
             var linkValidator =
                 /^(http|https)?:\/\/[a-zA-Z0-9-\.]+\.[a-z]{2,4}/;

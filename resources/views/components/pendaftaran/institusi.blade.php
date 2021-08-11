@@ -3,7 +3,7 @@
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-user"></i>
         <input type="text" class="form-control validate-name" id="name" name="name"
-            placeholder="Nama Direktur/Owner Rumah sakit" required>
+            placeholder="Nama Direktur/Owner Rumah sakit" value="{{ old('name') }}" required>
         <label for="name" class="color-highlight">Nama Direktur/Owner Rumah sakit</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -13,7 +13,7 @@
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-at"></i>
         <input type="email" class="form-control validate-email" id="email" name="email" placeholder="Alamat Email"
-            required>
+            value="{{ old('email') }}" required>
         <label for="email" class="color-highlight">Alamat Email</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -24,7 +24,7 @@
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-user"></i>
         <input type="text" class="form-control validate-name" id="institusi_name" name="institusi_name"
-            placeholder="Nama Institusi">
+            value="{{ old('institusi_name') }}" placeholder="Nama Institusi">
         <label for="institusi_name" class="color-highlight">Nama Institusi</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -35,8 +35,9 @@
     @foreach ($forms as $form)
         <div class="input-style no-borders has-icon validate-field mb-4">
             <i class="material-icons">{{ $form->icon }}</i>
-            <select name="{{ $form->key }}" id="{{ $form->key }}" class="form-control validate"
-                {{ !$form->required ?: 'required' }} onchange="showSubFrom('{{ $form->key }}')">
+            <select name="{{ $form->key }}" id="{{ $form->key }}" value="{{ old($form->key) }}"
+                class="form-control validate" {{ !$form->required ?: 'required' }}
+                onchange="showSubFrom('{{ $form->key }}')">
                 {!! $category !!}
             </select>
             <label for="{{ $form->key }}" class="color-highlight">{{ $form->label }}</label>
@@ -49,8 +50,8 @@
                 <div class="input-style no-borders has-icon validate-field mb-4 group_{{ $form->key }}"
                     id="{{ $form->key }}_{{ $sub->key }}" style="display: none">
                     <i class="material-icons">{{ $sub->icon }}</i>
-                    <select name="{{ $sub->key }}" id="{{ $sub->key }}" class="form-control validate"
-                        {{ !$sub->required ?: 'required' }}>
+                    <select name="{{ $sub->key }}" id="{{ $sub->key }}" value="{{ old($sub->key) }}"
+                        class="form-control validate" {{ !$sub->required ?: 'required' }}>
                         <option value>Pilih {{ $sub->label }}</option>
                         @foreach (json_decode($sub->data) as $data)
                             <option value="{{ $data }}">{{ $data }}</option>
@@ -64,9 +65,27 @@
         @endforeach
     @endforeach
 
-    <div class="input-style no-borders has-icon validate-field mb-4">
+
+    <div class="no-borders has-icon validate-field mb-4">
+        <select name="prov_code" id="prov_code" class="form-control" value="{{ old('prov_code') }}"
+            required></select>
+    </div>
+
+    <div class="no-borders has-icon validate-field mb-4">
+        <select name="kab_code" id="kab_code" class="form-control" value="{{ old('kab_code') }}" required></select>
+    </div>
+
+    <div class="no-borders has-icon validate-field mb-4">
+        <select name="kec_code" id="kec_code" class="form-control" value="{{ old('kec_code') }}" required></select>
+    </div>
+    <div class="no-borders has-icon validate-field mb-4">
+        <select name="kel_code" id="kel_code" class="form-control" value="{{ old('kel_code') }}" required></select>
+    </div>
+
+    {{-- <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-list"></i>
-        <select name="prov_code" id="prov_code" class="form-control validate" required onchange="loadKab()">
+        <select name="prov_code" id="prov_code" value="{{ old('prov_code') }}" class="form-control validate" required
+            onchange="loadKab()">
             {!! $prov !!}
         </select>
         <label for="prov_code" class="color-highlight">Provinsi</label>
@@ -76,7 +95,8 @@
 
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-list"></i>
-        <select name="kab_code" id="kab_code" class="form-control validate" required onchange="loadKec()">
+        <select name="kab_code" id="kab_code" value="{{ old('kab_code') }}" class="form-control validate" required
+            onchange="loadKec()">
             <option value="">Kabupaten/Kota</option>
         </select>
         <label for="kab_code" class="color-highlight">Kabupaten/Kota</label>
@@ -86,7 +106,8 @@
 
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-list"></i>
-        <select name="kec_code" id="kec_code" class="form-control validate" required onchange="loadKel()">
+        <select name="kec_code" id="kec_code" value="{{ old('kec_code') }}" class="form-control validate" required
+            onchange="loadKel()">
             <option value="">Kecamatan</option>
         </select>
         <label for="kec_code" class="color-highlight">Kecamatan</label>
@@ -96,19 +117,19 @@
 
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-list"></i>
-        <select name="kel_code" id="kel_code" class="form-control validate" required>
+        <select name="kel_code" id="kel_code" value="{{ old('kel_code') }}" class="form-control validate" required>
             <option value="">Kelurahan</option>
         </select>
         <label for="kel_code" class="color-highlight">Kelurahan</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div>
+    </div> --}}
 
 
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="material-icons">call</i>
         <input type="number" class="form-control validate" id="tlp_rs" name="tlp_rs"
-            placeholder="Nomor Telpon Rumah Sakit">
+            placeholder="Nomor Telpon Rumah Sakit" value="{{ old('tlp_rs') }}">
         <label for="tlp_rs" class="color-highlight">Nomor Telpon Rumah Sakit</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -137,7 +158,7 @@
 
     <div class="input-style no-borders has-icon mb-4">
         <i class="material-icons">article</i>
-        <textarea id="alamat" name="alamat" placeholder="Alamat Rumah Sakit"></textarea>
+        <textarea id="alamat" name="alamat" placeholder="Alamat Rumah Sakit" value="{{ old('alamat') }}"></textarea>
         <label for="alamat" class="color-highlight">Alamat Rumah Sakit</label>
     </div>
 
@@ -146,7 +167,7 @@
     </label>
     <div class="input-style no-borders has-icon validate-field mb-4">
         <input type="file" class="form-control validate-file" id="images" name="images" style="padding-left: 12px;"
-            required>
+            value="{{ old('images') }}" required>
     </div>
 
     <button class="btn btn-full btn-l font-600 font-13 gradient-highlight mt-4 rounded-s full-width" type="submit">

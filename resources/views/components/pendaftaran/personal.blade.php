@@ -2,7 +2,8 @@
 
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-user"></i>
-        <input type="text" class="form-control validate-name" id="name" name="name" placeholder="Nama" required>
+        <input type="text" class="form-control validate-name" id="name" name="name" placeholder="Nama"
+            value="{{ old('name') }}" required>
         <label for="name" class="color-highlight">Nama</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -11,26 +12,47 @@
 
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-at"></i>
-        <input type="email" class="form-control validate-email" id="form1ac" placeholder="Email Address">
-        <label for="form1ac" class="color-highlight">Email Address</label>
+        <input type="email" class="form-control validate-email" id="email" name="email" placeholder="Alamat Email"
+            value="{{ old('email') }}" required>
+        <label for="email" class="color-highlight">Alamat Email</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
         <em>(required)</em>
     </div>
 
-    <div class="input-style no-borders has-icon validate-field mb-4">
+
+
+    <div class="no-borders has-icon validate-field mb-4">
+        <select name="prov_code" id="prov_code" class="form-control" value="{{ old('prov_code') }}" required></select>
+    </div>
+
+    <div class="no-borders has-icon validate-field mb-4">
+        <select name="kab_code" id="kab_code" class="form-control" value="{{ old('kab_code') }}" required></select>
+    </div>
+
+    <div class="no-borders has-icon validate-field mb-4">
+        <select name="kec_code" id="kec_code" class="form-control" value="{{ old('kec_code') }}" required></select>
+    </div>
+    <div class="no-borders has-icon validate-field mb-4">
+        <select name="kel_code" id="kel_code" class="form-control" value="{{ old('kel_code') }}" required></select>
+    </div>
+
+
+    {{-- <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-list"></i>
-        <select name="prov_code" id="prov_code" class="form-control validate" required onchange="loadKab()">
+        <select name="prov_code" id="prov_code" class="form-control validate" value="{{ old('prov_code') }}" required
+            onchange="loadKab()">
             {!! $prov !!}
         </select>
         <label for="prov_code" class="color-highlight">Provinsi</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div>
+    </div> --}}
 
-    <div class="input-style no-borders has-icon validate-field mb-4">
+    {{-- <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-list"></i>
-        <select name="kab_code" id="kab_code" class="form-control validate" required onchange="loadKec()">
+        <select name="kab_code" id="kab_code" class="form-control validate" value="{{ old('kab_code') }}" required
+            onchange="loadKec()">
             <option value="">Kabupaten/Kota</option>
         </select>
         <label for="kab_code" class="color-highlight">Kabupaten/Kota</label>
@@ -40,7 +62,8 @@
 
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-list"></i>
-        <select name="kec_code" id="kec_code" class="form-control validate" required onchange="loadKel()">
+        <select name="kec_code" id="kec_code" class="form-control validate" value="{{ old('kec_code') }}" required
+            onchange="loadKel()">
             <option value="">Kecamatan</option>
         </select>
         <label for="kec_code" class="color-highlight">Kecamatan</label>
@@ -50,17 +73,24 @@
 
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-list"></i>
-        <select name="kel_code" id="kel_code" class="form-control validate" required>
+        <select name="kel_code" id="kel_code" value="{{ old('kel_code') }}" class="form-control validate" required>
             <option value="">Kelurahan</option>
         </select>
         <label for="kel_code" class="color-highlight">Kelurahan</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
+    </div> --}}
+
+    <div class="input-style no-borders has-icon mb-4">
+        <i class="material-icons">article</i>
+        <textarea id="alamat" name="alamat" placeholder="Alamat Lengkap" value="{{ old('alamat') }}"></textarea>
+        <label for="alamat" class="color-highlight">Alamat Lengkap</label>
     </div>
 
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-lock"></i>
-        <input type="password" class="form-control validate-password" id="form1ad" placeholder="Choose Password">
+        <input type="password" class="form-control validate-password" id="form1ad" placeholder="Choose Password"
+            required>
         <label for="form1ad" class="color-highlight">Choose Password</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -68,7 +98,8 @@
     </div>
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-lock"></i>
-        <input type="password" class="form-control validate-password" id="form1ae" placeholder="Confirm Password">
+        <input type="password" class="form-control validate-password" id="form1ae" placeholder="Confirm Password"
+            required>
         <label for="form1ae" class="color-highlight">Confirm Password</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
