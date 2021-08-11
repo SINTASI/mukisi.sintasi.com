@@ -15,7 +15,7 @@ class PendaftaranController extends Controller
      */
     public function index()
     {
-        $type = request('type', 'personal');
+        $type = request('type', 'institusi');
         return view('users.pendaftaran', [
             'type' => $type,
             'title' => 'Pendaftaran',

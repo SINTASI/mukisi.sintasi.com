@@ -66,21 +66,11 @@
     @endforeach
 
 
-    <div class="no-borders has-icon validate-field mb-4">
-        <select name="prov_code" id="prov_code" class="form-control" value="{{ old('prov_code') }}"
-            required></select>
-    </div>
 
-    <div class="no-borders has-icon validate-field mb-4">
-        <select name="kab_code" id="kab_code" class="form-control" value="{{ old('kab_code') }}" required></select>
-    </div>
 
-    <div class="no-borders has-icon validate-field mb-4">
-        <select name="kec_code" id="kec_code" class="form-control" value="{{ old('kec_code') }}" required></select>
-    </div>
-    <div class="no-borders has-icon validate-field mb-4">
+    {{-- <div class="no-borders has-icon validate-field mb-4">
         <select name="kel_code" id="kel_code" class="form-control" value="{{ old('kel_code') }}" required></select>
-    </div>
+    </div> --}}
 
     {{-- <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-list"></i>
@@ -128,6 +118,16 @@
 
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="material-icons">call</i>
+        <input type="number" class="form-control validate" id="no_pic" name="no_pic" placeholder="NO HP PIC Institusi"
+            value="{{ old('no_pic') }}">
+        <label for="no_pic" class="color-highlight">NO HP PIC Institusi</label>
+        <i class="fa fa-times disabled invalid color-red-dark"></i>
+        <i class="fa fa-check disabled valid color-green-dark"></i>
+    </div>
+
+
+    <div class="input-style no-borders has-icon validate-field mb-4">
+        <i class="material-icons">call</i>
         <input type="number" class="form-control validate" id="tlp_rs" name="tlp_rs"
             placeholder="Nomor Telpon Rumah Sakit" value="{{ old('tlp_rs') }}">
         <label for="tlp_rs" class="color-highlight">Nomor Telpon Rumah Sakit</label>
@@ -163,12 +163,27 @@
     </div>
 
 
-    <label for="images" class="color-highlight">Upload foto Rumah Sakit
+    <div class="no-borders has-icon validate-field mb-4">
+        <select name="prov_code" id="prov_code" class="form-control" value="{{ old('prov_code') }}"
+            required></select>
+    </div>
+
+    <div class="no-borders has-icon validate-field mb-4">
+        <select name="kab_code" id="kab_code" class="form-control" value="{{ old('kab_code') }}" required></select>
+    </div>
+
+    <div class="no-borders has-icon validate-field mb-4">
+        <select name="kec_code" id="kec_code" class="form-control" value="{{ old('kec_code') }}" required></select>
+    </div>
+
+
+
+    {{-- <label for="images" class="color-highlight">Upload foto Rumah Sakit
     </label>
     <div class="input-style no-borders has-icon validate-field mb-4">
         <input type="file" class="form-control validate-file" id="images" name="images" style="padding-left: 12px;"
             value="{{ old('images') }}" required>
-    </div>
+    </div> --}}
 
     <button class="btn btn-full btn-l font-600 font-13 gradient-highlight mt-4 rounded-s full-width" type="submit">
         Daftar</button>

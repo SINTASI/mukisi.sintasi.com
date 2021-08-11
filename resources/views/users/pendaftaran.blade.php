@@ -12,20 +12,23 @@
             <div class="content" id="tab-group-1">
                 <div class="tab-controls tabs-small tabs-rounded" data-highlight="bg-highlight">
 
-                    <a href="/pendaftaran?type=personal" {{ $type === 'institusi' ?: 'data-active' }}>Personal</a>
+                    {{-- <a href="/pendaftaran?type=personal" {{ $type === 'institusi' ?: 'data-active' }}>Personal</a> --}}
 
-                    <a href="/pendaftaran?type=institusi" {{ $type === 'personal' ?: 'data-active' }}>Institusi</a>
+                    {{-- <a href="/pendaftaran?type=institusi" {{ $type === 'personal' ?: 'data-active' }}>Institusi</a> --}}
+                    <a href="#" {{ $type === 'personal' ?: 'data-active' }}>Institusi</a>
 
                 </div>
                 <div class="clearfix mb-3"></div>
                 <form method="POST" action="/pendaftaran?type={{ $type }}" enctype="multipart/form-data">
                     @csrf
                     <div data-bs-parent="#tab-group-1" class="collapse show" id="{{ $type }}">
-                        @if ($type === 'personal')
+                        {{-- @if ($type === 'personal')
                             <x-dynamic-component :component="$componentName" />
                         @elseif ($type === 'institusi')
                             <x-dynamic-component :component="$componentName" />
-                        @endif
+                        @endif --}}
+
+                        <x-dynamic-component :component="$componentName" />
                     </div>
                 </form>
 

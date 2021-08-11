@@ -23,6 +23,7 @@ class EditUsers extends Migration
             $table->string('no_tlp_rs', 15)->nullable();
             $table->string('no_tlp', 15)->nullable();
             $table->string('no_wa', 15)->nullable();
+            $table->string('no_pic', 15)->nullable();
             $table->string('img_rs')->nullable()->default('/images/no-image2.jpg');
             $table->string('img_ktp')->nullable()->default('/images/no-image2.jpg');
             $table->longText('kehalian_khusus')->nullable();
