@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AnggotaController extends Controller
@@ -12,10 +13,19 @@ class AnggotaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $xhr = $request->query('xhr');
+        $type = $request->query('type', 'institusi');
+        $data = User::doesntHave('roles')->where('type', $type)->get();
+
+        if ($xhr) {
+            return response($data);
+        }
+
         return inertia('admin/anggota', [
-            'title' => 'POSTS'
+            'title' => 'Anggota',
+            'data' => $data
         ]);
     }
 
