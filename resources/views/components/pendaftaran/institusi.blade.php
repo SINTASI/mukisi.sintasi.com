@@ -128,9 +128,9 @@
 
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="material-icons">call</i>
-        <input type="number" class="form-control validate" id="tlp_rs" name="tlp_rs"
-            placeholder="Nomor Telpon Rumah Sakit" value="{{ old('tlp_rs') }}">
-        <label for="tlp_rs" class="color-highlight">Nomor Telpon Rumah Sakit</label>
+        <input type="number" class="form-control validate" id="no_tlp" name="no_tlp"
+            placeholder="Nomor Telpon Rumah Sakit" value="{{ old('no_tlp') }}">
+        <label for="no_tlp" class="color-highlight">Nomor Telpon Rumah Sakit</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
     </div>
