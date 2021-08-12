@@ -1,5 +1,4 @@
 <div class="content">
-
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-user"></i>
         <input type="text" class="form-control validate-name" id="name" name="name"
@@ -65,57 +64,6 @@
         @endforeach
     @endforeach
 
-
-
-
-    {{-- <div class="no-borders has-icon validate-field mb-4">
-        <select name="kel_code" id="kel_code" class="form-control" value="{{ old('kel_code') }}" required></select>
-    </div> --}}
-
-    {{-- <div class="input-style no-borders has-icon validate-field mb-4">
-        <i class="fa fa-list"></i>
-        <select name="prov_code" id="prov_code" value="{{ old('prov_code') }}" class="form-control validate" required
-            onchange="loadKab()">
-            {!! $prov !!}
-        </select>
-        <label for="prov_code" class="color-highlight">Provinsi</label>
-        <i class="fa fa-times disabled invalid color-red-dark"></i>
-        <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div>
-
-    <div class="input-style no-borders has-icon validate-field mb-4">
-        <i class="fa fa-list"></i>
-        <select name="kab_code" id="kab_code" value="{{ old('kab_code') }}" class="form-control validate" required
-            onchange="loadKec()">
-            <option value="">Kabupaten/Kota</option>
-        </select>
-        <label for="kab_code" class="color-highlight">Kabupaten/Kota</label>
-        <i class="fa fa-times disabled invalid color-red-dark"></i>
-        <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div>
-
-    <div class="input-style no-borders has-icon validate-field mb-4">
-        <i class="fa fa-list"></i>
-        <select name="kec_code" id="kec_code" value="{{ old('kec_code') }}" class="form-control validate" required
-            onchange="loadKel()">
-            <option value="">Kecamatan</option>
-        </select>
-        <label for="kec_code" class="color-highlight">Kecamatan</label>
-        <i class="fa fa-times disabled invalid color-red-dark"></i>
-        <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div>
-
-    <div class="input-style no-borders has-icon validate-field mb-4">
-        <i class="fa fa-list"></i>
-        <select name="kel_code" id="kel_code" value="{{ old('kel_code') }}" class="form-control validate" required>
-            <option value="">Kelurahan</option>
-        </select>
-        <label for="kel_code" class="color-highlight">Kelurahan</label>
-        <i class="fa fa-times disabled invalid color-red-dark"></i>
-        <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div> --}}
-
-
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="material-icons">call</i>
         <input type="number" class="form-control validate" id="no_pic" name="no_pic" placeholder="NO HP PIC Institusi"
@@ -129,32 +77,11 @@
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="material-icons">call</i>
         <input type="number" class="form-control validate" id="no_tlp" name="no_tlp"
-            placeholder="Nomor Telpon Rumah Sakit" value="{{ old('no_tlp') }}">
+            placeholder="Nomor Telpon Rumah Sakit" value="{{ old('no_tlp') }}" required>
         <label for="no_tlp" class="color-highlight">Nomor Telpon Rumah Sakit</label>
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
     </div>
-
-
-    <div class="input-style no-borders has-icon validate-field mb-4">
-        <i class="fa fa-lock"></i>
-        <input type="password" class="form-control validate-password" id="password" placeholder="Masukan Password"
-            required>
-        <label for="password" class="color-highlight">Masukan Password</label>
-        <i class="fa fa-times disabled invalid color-red-dark"></i>
-        <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div>
-
-
-    <div class="input-style no-borders has-icon validate-field mb-4">
-        <i class="fa fa-lock"></i>
-        <input type="password" class="form-control validate-password" id="password2" name="password"
-            placeholder="Konfirmasi Password" required>
-        <label for="password2" class="color-highlight">Konfirmasi Password</label>
-        <i class="fa fa-times disabled invalid color-red-dark"></i>
-        <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div>
-
 
     <div class="input-style no-borders has-icon mb-4">
         <i class="material-icons">article</i>
@@ -193,7 +120,7 @@
             <a href="#">Lupa Password?</a>
         </div>
         <div class="col-6 text-end">
-            <a href="#">Login disini!</a>
+            <a href="/login">Login disini!</a>
         </div>
     </div>
 

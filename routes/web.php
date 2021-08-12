@@ -35,7 +35,7 @@ Route::get('/post/{slug}', function ($slug) {
 });
 
 Route::resource('/pendaftaran', 'PendaftaranController');
-Route::get('/login', 'AuthController@login');
+Route::get('/login', 'AuthController@login')->name('login');
 
 
 Route::prefix('admin')->middleware(['role:admin', 'auth'])->group(function () {

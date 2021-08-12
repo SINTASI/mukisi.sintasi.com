@@ -42,25 +42,15 @@ class PendaftaranController extends Controller
     public function store(Request $request)
     {
         $type = request('type', 'personal');
-        try {
-            $data = $request->all();
-            $validator = validator()->make($data, [
-                'email' => 'unique:users,email'
-            ], [
-                'unique' => ':attribute sudah terdaftar.',
-            ]);
 
-            // if ($type === 'institusi') {
-            //     $data['img_rs'] = $request->file('images')->store('images');
-            // }
-
-            $data['password'] = bcrypt($request->password);
-            User::create($data);
-            return redirect('/login')->with('message', 'Pendaftaran behasil');
-        } catch (\Throwable $err) {
-            return redirect("/pendaftaran?type=$type")
-                ->with('error', $err->getMessage())
-                ->withInput($request->except('password'));
+        if (User::where('email', request('email'))->doesntExist()) {
+            User::create(request()->all());
+            return redirect('/login')
+                ->with('success', setting('register_success'));
+        } else {
+            return back()
+                ->withInput()
+                ->with('error', 'Alamat email sudah terdaftar');
         }
     }
 
