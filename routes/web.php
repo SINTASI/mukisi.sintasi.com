@@ -4,6 +4,7 @@ use App\Models\Map;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,13 @@ Route::get('/post/{slug}', function ($slug) {
 
 Route::resource('/pendaftaran', 'PendaftaranController');
 Route::get('/login', 'AuthController@login')->name('login');
+Route::get('/email/verify/{user}/{hash}', 'AuthController@userVerify');
+
+// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+//     $request->fulfill();
+//     return redirect('/login')->with('success', 'Akun berhasil terferivikasi...');
+// })->middleware('signed')->name('verification.verify');
+
 
 
 Route::prefix('admin')->middleware(['role:admin', 'auth'])->group(function () {

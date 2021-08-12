@@ -15,6 +15,7 @@
         "inertiajs/inertia-laravel": "^0.4.2",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.3",
         "rennokki/laravel-eloquent-query-cache": "^3.0",
         "spatie/laravel-medialibrary": "^9.0.0",
         "spatie/laravel-permission": "^4.2",
