@@ -26,6 +26,6 @@ class AuthController extends Controller
             event(new Verified($user));
         }
         return redirect('/login')
-            ->with('success', 'Akun berhasil terferivikasi...');
+            ->with('success', 'Selamat akun anda sudah berhasil terferivikasi...');
     }
 }
