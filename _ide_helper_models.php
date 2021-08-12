@@ -308,7 +308,7 @@ namespace App\Models{
  * @property string|null $kec_code
  * @property string|null $kel_code
  * @property int|null $profesi_id
- * @property-read \App\Models\MasterCategory $category
+ * @property-read \App\Models\MasterCategory|null $category
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions

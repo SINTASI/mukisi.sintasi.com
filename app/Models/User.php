@@ -44,6 +44,6 @@ class User extends Authenticatable
 
     public function category()
     {
-        return $this->belongsTo(MasterCategory::class, 'id', 'category_id');
+        return $this->belongsTo(MasterCategory::class, 'category_id');
     }
 }
