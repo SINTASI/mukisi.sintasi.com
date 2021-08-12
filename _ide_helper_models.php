@@ -297,6 +297,7 @@ namespace App\Models{
  * @property string|null $pendidikan SMK Kesehatan, AKADEMI/STIKES, Universitas
  * @property string|null $no_tlp_rs
  * @property string|null $no_tlp
+ * @property string|null $no_pic
  * @property string|null $no_wa
  * @property string|null $img_rs
  * @property string|null $img_ktp
@@ -307,6 +308,7 @@ namespace App\Models{
  * @property string|null $kec_code
  * @property string|null $kel_code
  * @property int|null $profesi_id
+ * @property-read \App\Models\MasterCategory $category
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
@@ -337,6 +339,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLab($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereNoAnggota($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNoPic($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereNoTlp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereNoTlpRs($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereNoWa($value)

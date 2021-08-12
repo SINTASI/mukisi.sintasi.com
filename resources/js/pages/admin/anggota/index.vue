@@ -10,7 +10,7 @@
                 <q-tab-panel name="institusi">
                     <institusi />
                 </q-tab-panel>
-                <q-tab-panel name="personal">
+                <q-tab-panel name="personal" disables>
                     <personal />
                 </q-tab-panel>
             </q-tab-panels>

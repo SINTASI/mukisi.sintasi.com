@@ -35,6 +35,7 @@
 </template>
 
 <script>
+// Nama, Email, Nama Institusi, No Hp, Hp PIC, Kategori, Tipe, Alamat
 export default {
     data() {
         return {
@@ -52,6 +53,49 @@ export default {
                     label: "EMAIL",
                     field: "email",
                     name: "email",
+                    sortable: true,
+                    align: "left",
+                },
+                {
+                    label: "Nama Institusi",
+                    field: "email",
+                    name: "email",
+                    sortable: true,
+                    align: "left",
+                },
+                {
+                    label: "No Hp",
+                    field: "no_hp",
+                    name: "no_hp",
+                    sortable: true,
+                    align: "left",
+                },
+                {
+                    label: "Hp PIC",
+                    field: "no_hp",
+                    name: "no_hp",
+                    sortable: true,
+                    align: "left",
+                },
+                {
+                    label: "Kategori",
+                    field: "category",
+                    name: "category",
+                    sortable: true,
+                    align: "left",
+                    format: (v) => v.name,
+                },
+                {
+                    label: "Tipe",
+                    field: "rs_type",
+                    name: "rs_type",
+                    sortable: true,
+                    align: "left",
+                },
+                {
+                    label: "Alamat",
+                    field: "almat",
+                    name: "almat",
                     sortable: true,
                     align: "left",
                 },

@@ -17,7 +17,9 @@ class AnggotaController extends Controller
     {
         $xhr = $request->query('xhr');
         $type = $request->query('type', 'institusi');
-        $data = User::doesntHave('roles')->where('type', $type)->get();
+        $data = User::doesntHave('roles')
+            ->with('category')
+            ->where('type', $type)->get();
 
         if ($xhr) {
             return response($data);
