@@ -11,6 +11,10 @@ class MapsController extends Controller
     public function getProv(Request $request)
     {
         // return Map::loadProv($request->query('isObj', false));
+        if (request('search', false)) {
+            return Map::loadProv($request->query('isObj', false));
+        }
+
         return Cache::rememberForever("getProv", function () {
             return Map::loadProv(request('isObj', false));
         });
@@ -24,7 +28,11 @@ class MapsController extends Controller
             'prov_code' => 'required'
         ]);
 
-        return Cache::rememberForever("getKab", function () {
+        if (request('search', false)) {
+            return Map::loadKab(request('prov_code'), request('isObj', false));
+        }
+
+        return Cache::rememberForever(request('prov_code'), function () {
             return Map::loadKab(request('prov_code'), request('isObj', false));
         });
     }
@@ -35,7 +43,11 @@ class MapsController extends Controller
             'kab_code' => 'required'
         ]);
 
-        return Cache::rememberForever("getKec", function () {
+        if (request('search', false)) {
+            return Map::loadKec(request('kab_code'), request('isObj', false));
+        }
+
+        return Cache::rememberForever(request('kab_code'), function () {
             return Map::loadKec(request('kab_code'), request('isObj', false));
         });
     }
@@ -46,7 +58,11 @@ class MapsController extends Controller
             'kec_code' => 'required'
         ]);
 
-        return Cache::rememberForever("getKel", function () {
+        if (request('search', false)) {
+            return Map::loadKel(request('kec_code'), request('isObj', false));
+        }
+
+        return Cache::rememberForever(request('kec_code'), function () {
             return Map::loadKel(request('kec_code'), request('isObj', false));
         });
 
