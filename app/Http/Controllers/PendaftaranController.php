@@ -43,15 +43,16 @@ class PendaftaranController extends Controller
     {
         $type = request('type', 'personal');
         try {
-            $request->validate([
+            $data = $request->all();
+            $validator = validator()->make($data, [
                 'email' => 'unique:users,email'
+            ], [
+                'unique' => ':attribute sudah terdaftar.',
             ]);
 
-            $data = $request->all();
-            if ($type === 'institusi') {
-                $data['img_rs'] = $request->file('images')->store('images');
-            }
-
+            // if ($type === 'institusi') {
+            //     $data['img_rs'] = $request->file('images')->store('images');
+            // }
 
             $data['password'] = bcrypt($request->password);
             User::create($data);
