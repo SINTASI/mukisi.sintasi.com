@@ -19,8 +19,9 @@ class AuthController extends Controller
     }
 
 
-    public function userVerify(User $user, $hash)
+    public function userVerify($id, $hash)
     {
+        $user = User::find($id);
         if (!$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
             event(new Verified($user));
