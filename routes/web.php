@@ -37,7 +37,7 @@ Route::get('/post/{slug}', function ($slug) {
 
 Route::resource('/pendaftaran', 'PendaftaranController');
 Route::get('/login', 'AuthController@login')->name('login');
-Route::get('/email/verify/{user}/{hash}', 'AuthController@userVerify');
+Route::get('/email/verify/{user}/{hash}', 'AuthController@userVerify')->name('verification.verify');
 
 // Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
 //     $request->fulfill();
