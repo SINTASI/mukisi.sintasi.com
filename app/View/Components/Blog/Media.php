@@ -17,7 +17,7 @@ class Media extends Component
      *
      * @return void
      */
-    public function __construct($mediaId, $type = 'images', $size = 'medium_large')
+    public function __construct($mediaId, $type = 'images', $size = 'td_324x235')
     {
         $this->media = $this->loadMedia($mediaId);
         $this->type = $type;
@@ -39,7 +39,6 @@ class Media extends Component
         if (Cache::has("media_$mediaId")) {
             return Cache::get("media_$mediaId", []);
         }
-
         return Cache::remember("media_$mediaId", now()->addMinutes(60), function () use ($mediaId) {
             return Http::get(env('WP_API') . "/media/$mediaId")->object();
         });
