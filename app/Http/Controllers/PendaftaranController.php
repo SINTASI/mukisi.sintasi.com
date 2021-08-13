@@ -44,8 +44,7 @@ class PendaftaranController extends Controller
         $type = request('type', 'personal');
 
         if (User::where('email', request('email'))->doesntExist()) {
-            User::create(request()->all())
-                ->sendEmailVerificationNotification();
+            $user = User::create(request()->all());
             return redirect('/login')
                 ->with('success', setting('register_success'));
         } else {
