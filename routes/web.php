@@ -4,6 +4,7 @@ use App\Models\Map;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -17,7 +18,16 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
+// Route::get('/', function () {
+//     Artisan::call('config:clear');
+//     Artisan::call('config:cache');
+//     // Artisan::call('optimize:clear');
+//     // echo Artisan::output();
+//     dd(DB::connection('wp')->table('users')->get());
+//     // return view('users.landing');
+// });
 
+Route::get('/', fn () => view('users.landing'));
 
 // Route::get('/', function () {
 //     $response  = Http::get(env('WP_URL') . '/wp-json');
@@ -27,7 +37,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 
 
-Route::get('/', fn () => view('users.landing'));
+
 
 Route::get('/post/{slug}', function ($slug) {
     return view('users.post', [
