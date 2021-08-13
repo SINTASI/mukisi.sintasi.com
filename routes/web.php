@@ -37,12 +37,12 @@ Route::get('/post/{slug}', function ($slug) {
 
 Route::resource('/pendaftaran', 'PendaftaranController');
 Route::get('/login', 'AuthController@login')->name('login');
-Route::get('/email/verify/{user}/{hash}', 'AuthController@userVerify')->name('verification.verify');
+// Route::get('/email/verify/{id}/{hash}', 'AuthController@userVerify')->name('verification.verify');
 
-// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-//     $request->fulfill();
-//     return redirect('/login')->with('success', 'Akun berhasil terferivikasi...');
-// })->middleware('signed')->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/login')->with('success', 'Akun berhasil terferivikasi...');
+})->middleware('signed')->name('verification.verify');
 
 
 
