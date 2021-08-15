@@ -26,9 +26,9 @@ Array.prototype.moveDown = function (value, by) {
     return this;
 };
 
-export default boot(({ app, Inertia }) => {
-    app.component("Header", Head);
-    app.config.globalProperties.APP_NAME = process.env.MIX_APP_NAME;
+export default boot(({ app }) => {
+    app.config.globalProperties.APP_NAME = "MUKISI";
+    // app.config.globalProperties.APP_NAME = process.env.MIX_APP_NAME;
     app.config.globalProperties.myTweak = (offset) => {
         return { minHeight: offset ? `calc(100vh - ${offset}px)` : "100vh" };
     };
@@ -38,4 +38,5 @@ export default boot(({ app, Inertia }) => {
         }
         return this.$page.props[key];
     };
+    app.component("Header", Head);
 });

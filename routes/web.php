@@ -18,16 +18,14 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-// Route::get('/', function () {
-//     Artisan::call('config:clear');
-//     Artisan::call('config:cache');
-//     // Artisan::call('optimize:clear');
-//     // echo Artisan::output();
-//     dd(DB::connection('wp')->table('users')->get());
-//     // return view('users.landing');
-// });
+Route::get('/', function () {
+    // Artisan::call('config:clear');
+    // Artisan::call('config:cache');
+    // Artisan::call('optimize:clear');
+    return view('users.landing');
+});
 
-Route::get('/', fn () => view('users.landing'));
+// Route::get('/', fn () => view('users.landing'));
 
 // Route::get('/', function () {
 //     $response  = Http::get(env('WP_URL') . '/wp-json');
@@ -64,7 +62,9 @@ Route::prefix('admin')->middleware(['role:admin', 'auth'])->group(function () {
 
     Route::get('/logout', 'Admin\AuthController@logout')->name('admin.logout');
 
-    Route::get('/dashboard', fn () => inertia('dashboard'))->name('admin.dashboard');
+    Route::get('/dashboard', fn () => inertia('dashboard', [
+        'title' => 'Dashboard'
+    ]))->name('admin.dashboard');
 
 
     Route::post('/posts/uploadFile', 'Admin\PostsController@uploadFile');

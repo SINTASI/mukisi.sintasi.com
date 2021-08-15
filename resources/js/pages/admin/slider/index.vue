@@ -140,7 +140,7 @@ export default {
                     cancel: true,
                     ok: "Hapus",
                 })
-                .onOK(() => {
+                .onOk(() => {
                     this.$inertia.delete(`/admin/slider/${row.id}`);
                 });
         },

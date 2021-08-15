@@ -10,9 +10,9 @@
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
 
     @if (isset($title))
-        <title>@setting('title') - {{ $title }}</title>
+    <title>@setting('title') - {{ $title }}</title>
     @else
-        <title>@setting('title')</title>
+    <title>@setting('title')</title>
     @endif
     @include('components.custome-style')
     <meta name="description" content="@setting('description')">
@@ -32,13 +32,12 @@
         .material-icons {
             font-size: inherit;
         }
-
     </style>
 
     @stack('style')
     <script type="text/javascript" src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="/vendor/select2.min.css" rel="stylesheet" />
+    <script src="/vendor/select2.min.js"></script>
 </head>
 
 <body class="theme-light" data-highlight="highlight-red">
@@ -53,7 +52,7 @@
 
 
     <script type="text/javascript" src="{{ asset('/template/scripts/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/template/scripts/custom.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/template/scripts/custom.js?r=').date('m') }}"></script>
     <script src="https://use.fontawesome.com/452826394c.js"></script>
 
     @stack('script')

