@@ -48,7 +48,7 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => 'localhost',
             'port' => env('DB_PORT', '3306'),
-            'database' => 'mukisi1_anggota',
+            'database' => 'mukisi1_web',
             'username' => 'mukisi1_anggota',
             'password' => 'rjGOWw24',
             'unix_socket' => env('DB_SOCKET', ''),

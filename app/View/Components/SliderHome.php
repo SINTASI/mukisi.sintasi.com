@@ -2,9 +2,10 @@
 
 namespace App\View\Components;
 
-use Illuminate\View\Component;
-
 use App\Models\Slider;
+
+use Illuminate\View\Component;
+use App\Models\WpRevsliderSlide;
 
 class SliderHome extends Component
 {
@@ -26,7 +27,8 @@ class SliderHome extends Component
     public function render()
     {
         return view('components.slider-home', [
-            'slider' => Slider::where('active', true)->orderBy('seq_no')->get()
+            // 'slider' => Slider::where('active', true)->orderBy('seq_no')->get()
+            'sliders' => WpRevsliderSlide::orderBy('slide_order')->get()
         ]);
     }
 }

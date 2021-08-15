@@ -4,21 +4,20 @@
             <div class="splide__track">
                 <div class="splide__list">
 
-                    @foreach ($slider as $sliders)
-                        <div class="splide__slide">
-                            <div class="{{ $sliders->class }}" data-card-height="{{ $sliders->height }}">
-                                <img src="{{ $sliders->getFirstMediaUrl('slider') }}"
-                                    alt="{{ setting('name') }}-{{ $sliders->name }}" height="100%" width="100%">
-                                {{-- <div class="card-overlay bg-gradient"></div> --}}
-                            </div>
+                    @foreach ($sliders as $slider)
+                    <div class="splide__slide">
+                        <div class="card card-style mx-3 mt-4 bg-20" data-card-height="210">
+                            <img src="{{ $slider->params->image }}" height="100%" width="100%">
+                            {{-- <div class="card-overlay bg-gradient"></div> --}}
                         </div>
+                    </div>
                     @endforeach
 
-                    @if (count($slider) === 0)
-                        <div class="splide__slide">
-                            <div class="card card-style mx-3 mt-4 no-img1" data-card-height="250">
-                            </div>
+                    @if (count($sliders) === 0)
+                    <div class="splide__slide">
+                        <div class="card card-style mx-3 mt-4 no-img1" data-card-height="250">
                         </div>
+                    </div>
                     @endif
 
                 </div>

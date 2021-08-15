@@ -28,3 +28,8 @@ Route::prefix('maps')->group(function () {
     Route::get('/getKec', 'MapsController@getKec');
     Route::get('/getKel', 'MapsController@getKel');
 });
+
+
+Route::prefix('wordpress')->group(function () {
+    Route::get('/', 'WordpressController@index');
+});
