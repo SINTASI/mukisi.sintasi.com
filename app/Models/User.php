@@ -45,7 +45,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function category()
     {
-        return $this->belongsTo(MasterCategory::class, 'category_id');
+        return $this->belongsTo(MasterCategory::class, 'category_id')->withDefault([
+            'name' => '',
+        ]);
     }
 
     protected static function booted()

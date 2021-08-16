@@ -58,8 +58,8 @@ export default {
                 },
                 {
                     label: "Nama Institusi",
-                    field: "email",
-                    name: "email",
+                    field: "institusi_name",
+                    name: "institusi_name",
                     sortable: true,
                     align: "left",
                 },
@@ -83,7 +83,7 @@ export default {
                     name: "category",
                     sortable: true,
                     align: "left",
-                    format: (v) => v.name,
+                    format: (v) => (v.name != null ? v.name : ""),
                 },
                 {
                     label: "Tipe",
