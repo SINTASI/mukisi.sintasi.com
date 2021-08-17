@@ -6,7 +6,7 @@
 
                     @foreach ($sliders as $slider)
                     <div class="splide__slide">
-                        <div class="card card-style mx-3 mt-4 bg-20" data-card-height="210">
+                        <div class="card card-style mx-3 mt-4 bg-20" data-card-height="180">
                             <img src="{{ $slider->params->image }}" height="100%" width="100%">
                             {{-- <div class="card-overlay bg-gradient"></div> --}}
                         </div>

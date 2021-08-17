@@ -15,6 +15,7 @@
     <title>@setting('title')</title>
     @endif
     @include('components.custome-style')
+    <meta name="theme-color" content="#66bb6a">
     <meta name="description" content="@setting('description')">
     <link rel="icon" type="image/png" href="@setting('favicon')">
     <link rel="stylesheet" type="text/css" href="{{ asset('/template/styles/bootstrap.css') }}">
