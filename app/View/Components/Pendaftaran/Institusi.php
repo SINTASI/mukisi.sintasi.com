@@ -5,12 +5,14 @@ namespace App\View\Components\Pendaftaran;
 use App\Models\Form;
 use App\Models\Map;
 use App\Models\MasterCategory;
+use App\Models\Profesi;
 use Illuminate\View\Component;
 
 class Institusi extends Component
 {
     public $prov;
     public $forms;
+    public $profesi;
     public $category;
     public $mapscript;
 
@@ -25,6 +27,7 @@ class Institusi extends Component
         $this->mapscript =  Map::loadScript();
         $this->prov =  Map::loadProv();
         $this->forms =  Form::with('subs')->get();
+        $this->profesi =  Profesi::loadHtml();
     }
 
     /**

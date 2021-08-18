@@ -8,6 +8,32 @@
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
         <em>(required)</em>
+        <small class="text-small">Nama beserta gelar</small>
+    </div>
+
+
+    @foreach ($forms as $form)
+        @if ($form->key === 'profesi_id')
+            <div class="input-style no-borders has-icon validate-field mb-4">
+                <i class="material-icons">{{ $form->icon }}</i>
+                <select name="{{ $form->key }}" id="{{ $form->key }}" value="{{ old($form->key) }}"
+                    class="form-control validate" {{ !$form->required ?: 'required' }}>
+                    {!! $profesi !!}
+                </select>
+                <label for="{{ $form->key }}" class="color-highlight">{{ $form->label }}</label>
+                <i class="fa fa-times disabled invalid color-red-dark"></i>
+                <i class="fa fa-check disabled valid color-green-dark"></i>
+            </div>
+        @endif
+    @endforeach
+
+    <div class="input-style no-borders has-icon validate-field mb-4">
+        <i class="fa fa-user"></i>
+        <input type="text" class="form-control validate-name" id="institusi_name" name="institusi_name"
+            value="{{ old('institusi_name') }}" placeholder="Institusi">
+        <label for="institusi_name" class="color-highlight">Institusi</label>
+        <i class="fa fa-times disabled invalid color-red-dark"></i>
+        <i class="fa fa-check disabled valid color-green-dark"></i>
     </div>
 
     <div class="input-style no-borders has-icon validate-field mb-4">
@@ -20,10 +46,20 @@
         <em>(required)</em>
     </div>
 
+    <div class="input-style no-borders has-icon validate-field mb-4">
+        <i class="material-icons">call</i>
+        <input type="number" class="form-control validate" id="no_tlp" name="no_tlp" placeholder="Nomor Telpon"
+            value="{{ old('no_tlp') }}" required>
+        <label for="no_tlp" class="color-highlight">Nomor Telpon</label>
+        <i class="fa fa-times disabled invalid color-red-dark"></i>
+        <i class="fa fa-check disabled valid color-green-dark"></i>
+    </div>
+
 
 
     <div class="no-borders has-icon validate-field mb-4">
-        <select name="prov_code" id="prov_code" class="form-control" value="{{ old('prov_code') }}" required></select>
+        <select name="prov_code" id="prov_code" class="form-control" value="{{ old('prov_code') }}"
+            required></select>
     </div>
 
     <div class="no-borders has-icon validate-field mb-4">
@@ -33,53 +69,55 @@
     <div class="no-borders has-icon validate-field mb-4">
         <select name="kec_code" id="kec_code" class="form-control" value="{{ old('kec_code') }}" required></select>
     </div>
-    <div class="no-borders has-icon validate-field mb-4">
+
+
+    {{-- <div class="no-borders has-icon validate-field mb-4">
         <select name="kel_code" id="kel_code" class="form-control" value="{{ old('kel_code') }}" required></select>
-    </div>
+    </div> --}}
 
 
     {{-- <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-list"></i>
         <select name="prov_code" id="prov_code" class="form-control validate" value="{{ old('prov_code') }}" required
-            onchange="loadKab()">
-            {!! $prov !!}
-        </select>
-        <label for="prov_code" class="color-highlight">Provinsi</label>
-        <i class="fa fa-times disabled invalid color-red-dark"></i>
-        <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div> --}}
+    onchange="loadKab()">
+    {!! $prov !!}
+    </select>
+    <label for="prov_code" class="color-highlight">Provinsi</label>
+    <i class="fa fa-times disabled invalid color-red-dark"></i>
+    <i class="fa fa-check disabled valid color-green-dark"></i>
+</div> --}}
 
     {{-- <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-list"></i>
         <select name="kab_code" id="kab_code" class="form-control validate" value="{{ old('kab_code') }}" required
-            onchange="loadKec()">
-            <option value="">Kabupaten/Kota</option>
-        </select>
-        <label for="kab_code" class="color-highlight">Kabupaten/Kota</label>
-        <i class="fa fa-times disabled invalid color-red-dark"></i>
-        <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div>
+onchange="loadKec()">
+<option value="">Kabupaten/Kota</option>
+</select>
+<label for="kab_code" class="color-highlight">Kabupaten/Kota</label>
+<i class="fa fa-times disabled invalid color-red-dark"></i>
+<i class="fa fa-check disabled valid color-green-dark"></i>
+</div>
 
-    <div class="input-style no-borders has-icon validate-field mb-4">
-        <i class="fa fa-list"></i>
-        <select name="kec_code" id="kec_code" class="form-control validate" value="{{ old('kec_code') }}" required
-            onchange="loadKel()">
-            <option value="">Kecamatan</option>
-        </select>
-        <label for="kec_code" class="color-highlight">Kecamatan</label>
-        <i class="fa fa-times disabled invalid color-red-dark"></i>
-        <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div>
+<div class="input-style no-borders has-icon validate-field mb-4">
+    <i class="fa fa-list"></i>
+    <select name="kec_code" id="kec_code" class="form-control validate" value="{{ old('kec_code') }}" required
+        onchange="loadKel()">
+        <option value="">Kecamatan</option>
+    </select>
+    <label for="kec_code" class="color-highlight">Kecamatan</label>
+    <i class="fa fa-times disabled invalid color-red-dark"></i>
+    <i class="fa fa-check disabled valid color-green-dark"></i>
+</div>
 
-    <div class="input-style no-borders has-icon validate-field mb-4">
-        <i class="fa fa-list"></i>
-        <select name="kel_code" id="kel_code" value="{{ old('kel_code') }}" class="form-control validate" required>
-            <option value="">Kelurahan</option>
-        </select>
-        <label for="kel_code" class="color-highlight">Kelurahan</label>
-        <i class="fa fa-times disabled invalid color-red-dark"></i>
-        <i class="fa fa-check disabled valid color-green-dark"></i>
-    </div> --}}
+<div class="input-style no-borders has-icon validate-field mb-4">
+    <i class="fa fa-list"></i>
+    <select name="kel_code" id="kel_code" value="{{ old('kel_code') }}" class="form-control validate" required>
+        <option value="">Kelurahan</option>
+    </select>
+    <label for="kel_code" class="color-highlight">Kelurahan</label>
+    <i class="fa fa-times disabled invalid color-red-dark"></i>
+    <i class="fa fa-check disabled valid color-green-dark"></i>
+</div> --}}
 
     <div class="input-style no-borders has-icon mb-4">
         <i class="material-icons">article</i>
@@ -87,7 +125,7 @@
         <label for="alamat" class="color-highlight">Alamat Lengkap</label>
     </div>
 
-    <div class="input-style no-borders has-icon validate-field mb-4">
+    {{-- <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="fa fa-lock"></i>
         <input type="password" class="form-control validate-password" id="form1ad" placeholder="Choose Password"
             required>
@@ -104,7 +142,7 @@
         <i class="fa fa-times disabled invalid color-red-dark"></i>
         <i class="fa fa-check disabled valid color-green-dark"></i>
         <em>(required)</em>
-    </div>
+    </div> --}}
 
 
     <button class="btn btn-full btn-l font-600 font-13 gradient-highlight mt-4 rounded-s full-width" type="submit">

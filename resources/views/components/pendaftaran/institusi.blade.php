@@ -32,37 +32,52 @@
 
 
     @foreach ($forms as $form)
-        <div class="input-style no-borders has-icon validate-field mb-4">
-            <i class="material-icons">{{ $form->icon }}</i>
-            <select name="{{ $form->key }}" id="{{ $form->key }}" value="{{ old($form->key) }}"
-                class="form-control validate" {{ !$form->required ?: 'required' }}
-                onchange="showSubFrom('{{ $form->key }}')">
-                {!! $category !!}
-            </select>
-            <label for="{{ $form->key }}" class="color-highlight">{{ $form->label }}</label>
-            <i class="fa fa-times disabled invalid color-red-dark"></i>
-            <i class="fa fa-check disabled valid color-green-dark"></i>
-        </div>
 
-        @foreach ($form->subs as $sub)
-            @if ($sub->type === 'select')
-                <div class="input-style no-borders has-icon validate-field mb-4 group_{{ $form->key }}"
-                    id="{{ $form->key }}_{{ $sub->key }}" style="display: none">
-                    <i class="material-icons">{{ $sub->icon }}</i>
-                    <select name="{{ $sub->key }}" id="{{ $sub->key }}" value="{{ old($sub->key) }}"
-                        class="form-control validate" {{ !$sub->required ?: 'required' }}>
-                        <option value>Pilih {{ $sub->label }}</option>
-                        @foreach (json_decode($sub->data) as $data)
-                            <option value="{{ $data }}">{{ $data }}</option>
-                        @endforeach
-                    </select>
-                    <label for="{{ $sub->key }}" class="color-highlight">{{ $sub->label }}</label>
-                    <i class="fa fa-times disabled invalid color-red-dark"></i>
-                    <i class="fa fa-check disabled valid color-green-dark"></i>
-                </div>
-            @endif
-        @endforeach
+        @if ($form->key === 'profesi_id')
+            <div class="input-style no-borders has-icon validate-field mb-4">
+                <i class="material-icons">{{ $form->icon }}</i>
+                <select name="{{ $form->key }}" id="{{ $form->key }}" value="{{ old($form->key) }}"
+                    class="form-control validate" {{ !$form->required ?: 'required' }}>
+                    {!! $profesi !!}
+                </select>
+                <label for="{{ $form->key }}" class="color-highlight">{{ $form->label }}</label>
+                <i class="fa fa-times disabled invalid color-red-dark"></i>
+                <i class="fa fa-check disabled valid color-green-dark"></i>
+            </div>
+        @else
+            <div class="input-style no-borders has-icon validate-field mb-4">
+                <i class="material-icons">{{ $form->icon }}</i>
+                <select name="{{ $form->key }}" id="{{ $form->key }}" value="{{ old($form->key) }}"
+                    class="form-control validate" {{ !$form->required ?: 'required' }}
+                    onchange="showSubFrom('{{ $form->key }}')">
+                    {!! $category !!}
+                </select>
+                <label for="{{ $form->key }}" class="color-highlight">{{ $form->label }}</label>
+                <i class="fa fa-times disabled invalid color-red-dark"></i>
+                <i class="fa fa-check disabled valid color-green-dark"></i>
+            </div>
+
+            @foreach ($form->subs as $sub)
+                @if ($sub->type === 'select')
+                    <div class="input-style no-borders has-icon validate-field mb-4 group_{{ $form->key }}"
+                        id="{{ $form->key }}_{{ $sub->key }}" style="display: none">
+                        <i class="material-icons">{{ $sub->icon }}</i>
+                        <select name="{{ $sub->key }}" id="{{ $sub->key }}" value="{{ old($sub->key) }}"
+                            class="form-control validate" {{ !$sub->required ?: 'required' }}>
+                            <option value>Pilih {{ $sub->label }}</option>
+                            @foreach (json_decode($sub->data) as $data)
+                                <option value="{{ $data }}">{{ $data }}</option>
+                            @endforeach
+                        </select>
+                        <label for="{{ $sub->key }}" class="color-highlight">{{ $sub->label }}</label>
+                        <i class="fa fa-times disabled invalid color-red-dark"></i>
+                        <i class="fa fa-check disabled valid color-green-dark"></i>
+                    </div>
+                @endif
+            @endforeach
+        @endif
     @endforeach
+
 
     <div class="input-style no-borders has-icon validate-field mb-4">
         <i class="material-icons">call</i>

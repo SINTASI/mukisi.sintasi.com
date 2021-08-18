@@ -3,12 +3,16 @@
 namespace App\View\Components\Pendaftaran;
 
 use App\Models\Map;
+use App\Models\Form;
+use App\Models\Profesi;
 use App\Models\MasterCategory;
 use Illuminate\View\Component;
 
 class Personal extends Component
 {
     public $prov;
+    public $forms;
+    public $profesi;
     public $mapscript;
     /**
      * Create a new component instance.
@@ -19,6 +23,8 @@ class Personal extends Component
     {
         $this->mapscript =  Map::loadScript();
         $this->prov =  Map::loadProv();
+        $this->profesi =  Profesi::loadHtml();
+        $this->forms =  Form::with('subs')->get();
     }
 
     /**
