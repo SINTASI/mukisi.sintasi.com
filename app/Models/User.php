@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Profesi;
 use App\Models\MasterCategory;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -43,9 +44,34 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['verified'];
+
+    /**
+     * Get the Verified
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getVerifiedAttribute($value)
+    {
+        return $this->hasVerifiedEmail();
+    }
+
     public function category()
     {
         return $this->belongsTo(MasterCategory::class, 'category_id')->withDefault([
+            'name' => '',
+        ]);
+    }
+
+    public function profesi()
+    {
+        return $this->belongsTo(Profesi::class)->withDefault([
             'name' => '',
         ]);
     }

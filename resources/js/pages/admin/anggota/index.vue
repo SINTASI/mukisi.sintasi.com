@@ -2,8 +2,8 @@
     <q-page :style-fn="myTweak" padding>
         <q-card class="my-card">
             <q-tabs v-model="tab" inline-label class="full-width">
-                <q-tab name="institusi" icon="mail" label="Institusi" />
-                <q-tab name="personal" icon="alarm" label="Personal" />
+                <q-tab name="institusi" icon="o_groups" label="Institusi" />
+                <q-tab name="personal" icon="person_outline" label="Personal" />
             </q-tabs>
 
             <q-tab-panels v-model="tab" animated>

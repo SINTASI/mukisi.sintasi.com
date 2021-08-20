@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\MapsLine;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,6 +17,11 @@ class Map extends Model
      * @var array
      */
     protected $guarded = ['id'];
+
+    public function user_prov()
+    {
+        return $this->hasMany(User::class, 'prov_code', 'code');
+    }
 
     public function latlng()
     {

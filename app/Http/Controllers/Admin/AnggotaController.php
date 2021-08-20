@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Verified;
 
 class AnggotaController extends Controller
 {
@@ -18,7 +19,7 @@ class AnggotaController extends Controller
         $xhr = $request->query('xhr');
         $type = $request->query('type', 'institusi');
         $data = User::doesntHave('roles')
-            ->with('category')
+            ->with(['category', 'profesi'])
             ->where('type', $type)->get();
 
         if ($xhr) {
@@ -29,6 +30,36 @@ class AnggotaController extends Controller
             'title' => 'Anggota',
             'data' => $data
         ]);
+    }
+
+    public function resendEmail(User $user)
+    {
+        try {
+            if (!$user->hasVerifiedEmail()) {
+                $user->sendEmailVerificationNotification();
+            }
+            return response($user);
+        } catch (\Throwable $err) {
+            return response([
+                'message' => $err->getMessage()
+            ], 404);
+        }
+    }
+
+
+    public function verifyEmail(User $user)
+    {
+        try {
+            if (!$user->hasVerifiedEmail()) {
+                $user->markEmailAsVerified();
+                event(new Verified($user));
+            }
+            return response($user);
+        } catch (\Throwable $err) {
+            return response([
+                'message' => $err->getMessage()
+            ], 404);
+        }
     }
 
     /**

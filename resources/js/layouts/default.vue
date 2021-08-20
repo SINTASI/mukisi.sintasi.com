@@ -2,10 +2,10 @@
     <q-layout view="lHh Lpr lFf">
         <Header :title="title ? `${title} - ${APP_NAME}` : APP_NAME" />
 
-        <q-header elevated class="bg-green-5">
+        <q-header reveal elevated class="bg-green-5">
             <q-toolbar>
                 <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
-                <q-toolbar-title>Header</q-toolbar-title>
+                <q-toolbar-title>{{ APP_NAME }}</q-toolbar-title>
             </q-toolbar>
         </q-header>
         <q-drawer
@@ -64,7 +64,9 @@
             >
                 <div class="absolute-bottom bg-transparent">
                     <q-avatar size="56px" class="q-mb-sm">
-                        <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+                        <img
+                            :src="`https://ui-avatars.com/api/?name=${user.name}&m=54`"
+                        />
                     </q-avatar>
                     <div class="text-weight-bold">{{ user.name }}</div>
                     <div>@{{ user.username }}</div>
