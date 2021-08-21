@@ -15,15 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     //Global Variables
-    let isPWA = false; // Enables or disables the service worker and PWA
+    let isPWA = true; // Enables or disables the service worker and PWA
     let isAJAX = false; // AJAX transitions. Requires local server or server
-    var pwaName = "MUKISI"; //Local Storage Names for PWA
+    var pwaName = "ANGGOTA MUKISI"; //Local Storage Names for PWA
     var pwaRemind = 1; //Days to re-remind to add to home
     var pwaNoCache = true; //Requires server and HTTPS/SSL. Will clear cache with each visit
 
     //Setting Service Worker Locations scope = folder | location = service worker js location
     var pwaScope = "/";
-    var pwaLocation = "/template/_service-worker.js";
+    var pwaLocation = "/_service-worker.js";
 
     //Place all your custom Javascript functions and plugin calls below this line
     function init_template() {
@@ -695,7 +695,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     loadHighlight.className = "page-highlight";
                     loadHighlight.type = "text/css";
                     loadHighlight.href =
-                        "styles/highlights/highlight_" + highlight + ".css";
+                        "/template/styles/highlights/highlight_" +
+                        highlight +
+                        ".css";
                     document
                         .getElementsByTagName("head")[0]
                         .appendChild(loadHighlight);
@@ -715,7 +717,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 loadHighlight.className = "page-highlight";
                 loadHighlight.type = "text/css";
                 loadHighlight.href =
-                    "styles/highlights/highlight_" + rememberHighlight + ".css";
+                    "/template/styles/highlights/highlight_" +
+                    rememberHighlight +
+                    ".css";
                 if (!document.querySelectorAll(".page-highlight").length) {
                     document
                         .getElementsByTagName("head")[0]

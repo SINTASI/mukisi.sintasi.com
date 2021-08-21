@@ -17,11 +17,14 @@ class Media extends Component
      *
      * @return void
      */
-    public function __construct($mediaId, $type = 'images', $size = 'td_324x235')
+    public function __construct($mediaId, $type = 'images', $size = 'td_533x261')
     {
         $this->media = $this->loadMedia($mediaId);
         $this->type = $type;
         $this->size = $size;
+        // if (!property_exists($this->media->media_details->sizes, $size)) {
+        //     $this->size = 'full';
+        // }
     }
 
     /**

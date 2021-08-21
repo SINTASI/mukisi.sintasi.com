@@ -1,7 +1,7 @@
 {
-    "/js/app.js": "/js/app.js?id=fe83a706e5d1341ee1a4",
-    "/js/pdfmake.js": "/js/pdfmake.js?id=7da9dee7ce8bcab06a8d",
-    "/js/canvg.js": "/js/canvg.js?id=6eadd00e68123ab764cf",
-    "/js/xlsx.js": "/js/xlsx.js?id=8b4ef1ec756dd1549370",
-    "/css/app.css": "/css/app.css?id=68b329da9893e34099c7"
+    "/js/app.js": "/js/app.js",
+    "/js/pdfmake.js": "/js/pdfmake.js",
+    "/js/canvg.js": "/js/canvg.js",
+    "/js/xlsx.js": "/js/xlsx.js",
+    "/css/app.css": "/css/app.css"
 }

@@ -82,4 +82,21 @@ class User extends Authenticatable implements MustVerifyEmail
             return $builder->where('email', '!=', 'masangga.com@gmail.com');
         });
     }
+
+    public static function generateNo()
+    {
+        $kode = '';
+        // $kode = $pref.date('my').doc_code();
+        // $this->db->where('klinik', $klinik_id);
+        // $this->db->like('trs_no', $kode);
+        // $this->db->select_max('trs_no');
+        // $qry = $this->db->get('tbl_transaksi');
+        // if ($qry->num_rows() > 0) {
+        // 	$max_no = (int) substr($qry->row()->trs_no, -4) + 1;
+        // 	$trs_no = str_pad($max_no, 4, '0', STR_PAD_LEFT);
+        // } else {
+        // 	$trs_no = '0001';
+        // }
+        // return $kode . $trs_no;
+    }
 }

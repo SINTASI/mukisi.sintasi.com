@@ -10,9 +10,9 @@
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
 
     @if (isset($title))
-    <title>@setting('title') - {{ $title }}</title>
+        <title>@setting('title') - {{ $title }}</title>
     @else
-    <title>@setting('title')</title>
+        <title>@setting('title')</title>
     @endif
     @include('components.custome-style')
     <meta name="theme-color" content="#66bb6a">
@@ -26,13 +26,14 @@
         href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons|Material+Icons+Outlined|Material+Icons+Round"
         rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('/template/fonts/css/fontawesome-all.min.css') }}">
-    <link rel="manifest" href="{{ asset('/template/_manifest.json') }}">
+    <link rel="manifest" href="{{ asset('/_manifest.json?r=') . rand() }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/template/app/icons/icon-192x192.png') }}">
 
     <style>
         .material-icons {
             font-size: inherit;
         }
+
     </style>
 
     @stack('style')
@@ -53,7 +54,7 @@
 
 
     <script type="text/javascript" src="{{ asset('/template/scripts/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/template/scripts/custom.js?r=').date('m') }}"></script>
+    <script type="text/javascript" src="{{ asset('/template/scripts/custom.js?r=') . rand() }}"></script>
     <script src="https://use.fontawesome.com/452826394c.js"></script>
 
     @stack('script')
